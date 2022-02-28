@@ -21,7 +21,7 @@
     <a href="{{ url('/home') }}"> <i class="fas fa-home"></i> <span>home</span> </a>
     <a href="{{ url('/about') }}"> <i class="fas fa-user"></i> <span>about</span> </a>
     <a href="{{ url('/portfolio') }}"> <i class="fas fa-briefcase"></i> <span>portfolio</span> </a>
-    <a href="{{ url('/blog') }}"> <i class="fas fa-blog"></i> <span>blogs</span> </a>
+    <a href="{{ url('/blogs') }}"> <i class="fas fa-blog"></i> <span>blogs</span> </a>
     <a href="{{ url('/contact') }}"> <i class="fas fa-address-book"></i> <span>contact</span> </a>
 </nav>
 
