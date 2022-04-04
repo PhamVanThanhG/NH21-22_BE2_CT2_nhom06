@@ -13,18 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{page?}', function ($page="home"){
+Route::get('/{page?}', function ($page="index"){
     return view($page);
 });
 
-// Route::get('/home', function() {
-//     return view('home');
-// });
-
-// Route::get('/welcome', function() {
-//     return view('welcome');
-// });
-
-// Route::get('/about?name={name}&{pass}', function($age) {
-//     return view('about');
-// })->middleware('checklogin');

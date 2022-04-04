@@ -1,1 +1,0 @@
-minh la Thanh
