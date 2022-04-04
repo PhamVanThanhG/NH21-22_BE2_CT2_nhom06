@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{page?}', function ($page="index"){
-    return view($page);
-});
+Route::get('/{page?}', [UserController::class, 'navigation']);
+// Route::get('/{page?}', function ($page="index"){
+//     return view($page);
+// });
 
