@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentProductTable extends Migration
+class CreateStateTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateCommentProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('comment_product', function (Blueprint $table) {
-            $table->id();
-            $table->timestamp('comment_date')->useCurrent();
-            $table->string('comment')->nullable();
+        Schema::create('state', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('state_name');
         });
     }
 
@@ -27,6 +26,6 @@ class CreateCommentProductTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comment_product');
+        Schema::dropIfExists('state');
     }
 }

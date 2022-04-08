@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStateTable extends Migration
+class CreateDiscountTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateStateTable extends Migration
      */
     public function up()
     {
-        Schema::create('state', function (Blueprint $table) {
-            $table->id();
-            $table->string('state_name');
+        Schema::create('discount', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->boolean('active');
+            
         });
     }
 
@@ -26,6 +27,6 @@ class CreateStateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('state');
+        Schema::dropIfExists('discount');
     }
 }
