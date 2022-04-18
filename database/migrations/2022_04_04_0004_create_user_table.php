@@ -22,7 +22,7 @@ class CreateUserTable extends Migration
             $table->string('phonenumber');
             $table->timestamp('created_at')->useCurrent();
             $table->integer('role');
-            $table->timestamp('birthday');
+            $table->timestamp('birthday')->nullable();
         });
     }
 

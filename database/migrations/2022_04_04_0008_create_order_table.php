@@ -19,7 +19,7 @@ class CreateOrderTable extends Migration
             $table->integer('quantity');
             $table->unsignedBigInteger('state_id');
             $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('confirm_date');
+            $table->timestamp('confirm_date')->nullable();
             $table->double('price_reduce', 8, 1);
         });
     }
