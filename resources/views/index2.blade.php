@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <p>{{$data[0]->username}}</p>
+    <p>{{$data[0]->product_type->type_name}}</p>
 </body>
 </html>

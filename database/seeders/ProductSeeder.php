@@ -29,16 +29,16 @@ class ProductSeeder extends Seeder
             'expire_period' => 1,
         ]);
         DB::table('product')->insert([
-                'name' => Str::random(10),
-                'type_id' => 1,
-                'description' => Str::random(10),
-                'image' => Str::random(10),
-                'price' => 1,
-                'discount_id' => 1,
-                'created_at' => date("Y-m-d H:i:s"),
-                'feature' => true,
-                'expire_period' => 1,
-            ]);
+            'name' => Str::random(10),
+            'type_id' => 2,
+            'description' => Str::random(10),
+            'image' => Str::random(10),
+            'price' => 1,
+            'discount_id' => 1,
+            'created_at' => date("Y-m-d H:i:s"),
+            'feature' => true,
+            'expire_period' => 1,
+        ]);
         //
     }
 }
