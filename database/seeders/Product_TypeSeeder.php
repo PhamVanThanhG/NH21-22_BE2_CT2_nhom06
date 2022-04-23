@@ -21,6 +21,9 @@ class Product_TypeSeeder extends Seeder
             [
                 'type_name' => "Music speaker",
             ],
+            [
+                'type_name' => "Laptop",
+            ],
         ]);
     }
 }

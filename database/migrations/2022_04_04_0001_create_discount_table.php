@@ -16,6 +16,7 @@ class CreateDiscountTable extends Migration
         Schema::create('discount', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->boolean('active');
+            $table->decimal('values');
             
         });
     }

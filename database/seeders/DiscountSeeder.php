@@ -16,13 +16,16 @@ class DiscountSeeder extends Seeder
     {
         DB::table('discount')->insert([
             [
-                'active' => 15,
+                'active' => true,
+                'values' => 0.5,
             ],
             [
-                'active' => 20,
+                'active' => true,
+                'values' => 0.2,
             ],
             [
-                'active' => 35,
+                'active' => false,
+                'values' => 0,
             ]
         ]);
     }
