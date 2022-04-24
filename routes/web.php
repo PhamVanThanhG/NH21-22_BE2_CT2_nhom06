@@ -14,8 +14,8 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [UserController::class, 'index']);
+//Route::get('/', [UserController::class, 'index']);
 // Route::get('/{page?}', function ($page="index"){
 //     return view($page);
 // });
-
+Route::get('/{page?}', [UserController::class, 'goTo']);

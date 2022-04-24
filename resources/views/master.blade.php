@@ -121,7 +121,7 @@
     <!-- end header section -->
   </div>
 
-@yield('content')
+  @yield('content')
 
   <!-- info section -->
   <section class="info_section ">
@@ -245,8 +245,172 @@
   <script src="{{ asset('js/bootstrap.js') }}"></script>
   <!-- custom js -->
   <script src="{{ asset('js/custom.js') }}"></script>
-  
-  
+  <script src="{{ asset('js/script.js') }}"></script>
+  <script>
+    const all = document.getElementById('all');
+    const show = document.getElementById('productShow');
+    const phantrang = document.getElementById('phantrang');
+    <?php
+    foreach ($product_type as $value) {
+    ?>
+      const type<?php echo ($value['id']) ?> = document.getElementById('type<?php echo ($value['id']) ?>');
+    <?php
+    }
+    foreach ($product_type as $value) {
+    ?>
+      type<?php echo ($value['id']) ?>.addEventListener("click", () => {
+        if (!type<?php echo ($value['id']) ?>.classList.contains('active')) {
+          if (all.classList.contains('active')) {
+            all.classList.remove('active');
+          }
+          <?php
+          foreach ($product_type as $valuee) {
+          ?>
+            if (type<?php echo ($valuee['id']) ?>.classList.contains('active')) {
+              type<?php echo ($valuee['id']) ?>.classList.remove('active');
+            }
+          <?php
+          }
+          ?>
+          type<?php echo ($value['id']) ?>.classList.add('active');
+          <?php
+          $productsShow = array();
+          foreach ($product as $prod) {
+            if ($prod['type_id'] == $value['id']) {
+              array_push($productsShow, $prod);
+            }
+          }
+          ?>
+          show.innerHTML = `      <?php
+                                  foreach ($productsShow as $pro) {
+                                    if ($pro['type_id'] == $value['id']) {
+                                  ?>
+        <div class="col-sm-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <?php
+                                      if ($pro->discount->active != 0) {
+              ?>
+                <div class="product-label">
+                  <span class="sale">-<?php echo ($pro->discount->values * 100) ?>%</span>
+                </div>
+              <?php
+                                      }
+              ?>
+              <div style="position: absolute;"> <img src="http://127.0.0.1:8000/images/<?php echo ($pro['image']) ?>" alt="">
+                <!-- <img src="{{ asset('images/<?php echo ($pro['image']) ?>') }}" alt=""> -->
+              </div>
+              <a href="" class="add_cart_btn">
+                <span>
+                  Add To Cart
+                </span>
+              </a>
+            </div>
+            <div class="detail-box">
+              <h5>
+                <?php echo $pro['name'] ?>
+              </h5>
+              <div class="product_info">
+                <h5>
+                  <span>$</span><?php echo (number_format($pro['price'])) ?>
+                </h5>
+                <div class="star_container">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <?php
+                                    }
+                                  }
+      ?>`
+          phantrang.innerHTML = `    <div class="store-filter clearfix" id="phantrang">
+      <ul class="store-pagination" style="margin-top: 40px;">
+        <?php
+        $sizeLists = count($productsShow);
+        var_dump($sizeLists);
+        ?>
+        <li>1</li>
+        <li>2</li>
+        <li class="activee">3</li>
+        <li>4</li>
+      </ul>
+    </div>`
+        }
+      })
+    <?php
+    }
+    ?>
+    all.addEventListener("click", () => {
+      if (!all.classList.contains('active')) {
+        <?php
+        foreach ($product_type as $valuee) {
+        ?>
+          if (type<?php echo ($valuee['id']) ?>.classList.contains('active')) {
+            type<?php echo ($valuee['id']) ?>.classList.remove('active');
+          }
+        <?php
+        }
+        ?>
+        all.classList.add('active');
+        <?php
+        $productsShow = $product;
+        ?>
+        show.innerHTML = `      <?php
+                                foreach ($productsShow as $value) {
+                                ?>
+        <div class="col-sm-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <?php
+                                  if ($value->discount->active != 0) {
+              ?>
+                <div class="product-label">
+                  <span class="sale">-<?php echo ($value->discount->values * 100) ?>%</span>
+                </div>
+              <?php
+                                  }
+              ?>
+              <div style="position: absolute;"> <img src="http://127.0.0.1:8000/images/<?php echo ($value['image']) ?>" alt="">
+                <!-- <img src="{{ asset('images/<?php echo ($value['image']) ?>') }}" alt=""> -->
+              </div>
+              <a href="" class="add_cart_btn">
+                <span>
+                  Add To Cart
+                </span>
+              </a>
+            </div>
+            <div class="detail-box">
+              <h5>
+                <?php echo $value['name'] ?>
+              </h5>
+              <div class="product_info">
+                <h5>
+                  <span>$</span><?php echo (number_format($value['price'])) ?>
+                </h5>
+                <div class="star_container">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <?php
+                                }
+      ?>`
+      }
+    })
+  </script>
+
 
 </body>
 

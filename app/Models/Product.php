@@ -13,4 +13,7 @@ class Product extends Model
     function product_type(){
         return $this->belongsTo(Product_Type::class, 'type_id');
     }
+    function discount(){
+        return $this->belongsTo(Discount::class, 'discount_id');
+    }
 }

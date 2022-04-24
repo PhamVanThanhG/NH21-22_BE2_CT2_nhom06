@@ -1,5 +1,5 @@
-@extends('master')
-@section('content')
+@extends('master');
+@section('content');
     <!-- slider section -->
     <section class="slider_section ">
       <div id="customCarousel1" class="carousel slide" data-ride="carousel">
