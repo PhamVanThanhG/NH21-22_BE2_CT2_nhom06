@@ -15,8 +15,10 @@ class UserController extends Controller
         return view('index2',['data'=>$data]);
     }
     function goTo($page = "index"){
+        $getproduct = Product::take(9)->get();
         $product = Product::all();
         $product_type = Product_Type::all();
-        return view($page, ['product' =>$product, 'product_type' => $product_type]);
+        return view($page, ['product' =>$product,'getproduct'=>$getproduct, 'product_type' => $product_type]);
     }
+    
 }
