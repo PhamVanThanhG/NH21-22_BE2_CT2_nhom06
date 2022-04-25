@@ -43,10 +43,14 @@ $productsShow = $product;
               </div>
               <a href="" class="add_cart_btn">
                 <span>
-                  Add To Cart
+                  Add To Cart<br>
+                </span>
+                <span>
+                  Detail
                 </span>
               </a>
             </div>
+            
             <div class="detail-box">
               <h5>
                 <?php echo $value['name'] ?>

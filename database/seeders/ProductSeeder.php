@@ -80,7 +80,7 @@ class ProductSeeder extends Seeder
             'price' => 4199,
             'discount_id' => 1,
             'created_at' => date("Y-m-d H:i:s"),
-            'feature' => true,
+            'feature' => false,
             'expire_period' => 1,
         ],
         [
@@ -91,7 +91,7 @@ class ProductSeeder extends Seeder
             'price' => 4089,
             'discount_id' => 1,
             'created_at' => date("Y-m-d H:i:s"),
-            'feature' => true,
+            'feature' => false,
             'expire_period' => 1,
         ],
         [
@@ -102,7 +102,7 @@ class ProductSeeder extends Seeder
             'price' => 4934,
             'discount_id' => 1,
             'created_at' => date("Y-m-d H:i:s"),
-            'feature' => true,
+            'feature' => false,
             'expire_period' => 1,
         ],
         [
@@ -113,7 +113,7 @@ class ProductSeeder extends Seeder
             'price' => 6074,
             'discount_id' => 1,
             'created_at' => date("Y-m-d H:i:s"),
-            'feature' => true,
+            'feature' => false,
             'expire_period' => 1,
         ],
         [
@@ -124,7 +124,7 @@ class ProductSeeder extends Seeder
             'price' => 2699,
             'discount_id' => 1,
             'created_at' => date("Y-m-d H:i:s"),
-            'feature' => true,
+            'feature' => false,
             'expire_period' => 1,
         ],
         [
@@ -190,7 +190,7 @@ class ProductSeeder extends Seeder
             'price' => 399,
             'discount_id' => 1,
             'created_at' => date("Y-m-d H:i:s"),
-            'feature' => true,
+            'feature' => false,
             'expire_period' => 1,
         ],
         [
@@ -201,7 +201,7 @@ class ProductSeeder extends Seeder
             'price' => 116,
             'discount_id' => 1,
             'created_at' => date("Y-m-d H:i:s"),
-            'feature' => true,
+            'feature' => false,
             'expire_period' => 1,
         ],
         [
@@ -212,7 +212,7 @@ class ProductSeeder extends Seeder
             'price' => 274,
             'discount_id' => 1,
             'created_at' => date("Y-m-d H:i:s"),
-            'feature' => true,
+            'feature' => false,
             'expire_period' => 1,
         ],
         [
@@ -223,7 +223,7 @@ class ProductSeeder extends Seeder
             'price' => 399,
             'discount_id' => 1,
             'created_at' => date("Y-m-d H:i:s"),
-            'feature' => true,
+            'feature' => false,
             'expire_period' => 1,
         ],
         [
@@ -234,7 +234,7 @@ class ProductSeeder extends Seeder
             'price' => 95,
             'discount_id' => 1,
             'created_at' => date("Y-m-d H:i:s"),
-            'feature' => true,
+            'feature' => false,
             'expire_period' => 1,
         ]],
     );
