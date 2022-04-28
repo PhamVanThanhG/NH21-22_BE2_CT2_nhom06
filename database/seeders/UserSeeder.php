@@ -16,26 +16,34 @@ class UserSeeder extends Seeder
      */
     public function run()
     {  
-        // DB::table('users')->insert([
-        //     'name' => Str::random(10),
-        //     'email' => Str::random(10).'@gmail.com',
-        //     'password' => Hash::make('password'),
-        //     'address' => Str::random(10),
-        //     'phonenumber' => Str::random(10),
-        //     'created_at' => date("Y-m-d H:i:s"),
-        //     'role' => 1,
-        //     'birthday' => date("Y-m-d H:i:s"),
-        // ]);
-        // DB::table('users')->insert([
-        //     'name' => Str::random(10),
-        //     'email' => Str::random(10).'@gmail.com',
-        //     'password' => Hash::make('password'),
-        //     'address' => Str::random(10),
-        //     'phonenumber' => Str::random(10),
-        //     'created_at' => date("Y-m-d H:i:s"),
-        //     'role' => 1,
-        //     'birthday' => date("Y-m-d H:i:s"),
-        // ]);
+        DB::table('users')->insert([
+            [
+                'name' => "Quoc Hoang",
+                'email' => "quochoang".'@gmail.com',
+                //'password' => Hash::make('password'),
+                'password' => "123456",
+                'address' => "Phu Yen",
+                'phonenumber' => "0787539285",
+                'created_at' => date("Y-m-d H:i:s"),
+                'role' => 1,
+                'birthday' => date("Y-m-d H:i:s"),
+
+            ],
+            [
+                'name' => "Van Thanh",
+                'email' => "vanthanh".'@gmail.com',
+                //'password' => Hash::make('password'),
+                'password' => "123456",
+                'address' => "Binh Dinh",
+                'phonenumber' => "0787539285",
+                'created_at' => date("Y-m-d H:i:s"),
+                'role' => 1,
+                'birthday' => date("Y-m-d H:i:s"),
+
+            ],
+           
+        ]);
+        
 
         //
     }

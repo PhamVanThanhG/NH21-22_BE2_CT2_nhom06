@@ -20,8 +20,7 @@ class CreateRatingTable extends Migration
             $table->double('rating_value', 2, 1);
             $table->string('comment');
             $table->timestamp('created_at')->useCurrent();
-            $table->double('total_rating', 6, 1);
-            $table->integer('total_comment');
+           
 
 
             
