@@ -36,7 +36,11 @@ class RatingSeeder extends Seeder
             [
                 'product_id' => 1,
                 'user_id' => 2,
+<<<<<<< HEAD
                 'rating_value' => 2,
+=======
+                'rating_value' => 5,
+>>>>>>> da1b553dbf685208bd6022034c9509ceecebce12
                 'comment' => "San pham tam duoc",
                 'created_at' => date("Y-m-d H:i:s"),
 
