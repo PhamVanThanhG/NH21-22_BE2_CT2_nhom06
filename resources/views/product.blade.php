@@ -38,8 +38,9 @@ $productsShow = $product;
               <?php
               }
               ?>
-              <div style="position: absolute;"> <img src="http://127.0.0.1:8000/images/<?php echo ($value['image']) ?>" alt="">
-                <!-- <img src="{{ asset('images/<?php echo ($value['image']) ?>') }}" alt=""> -->
+              <div style="position: absolute;">
+                <!-- <img src="http://127.0.0.1:8000/images/<?php echo ($value['image']) ?>" alt=""> -->
+                <img src="{{ asset('images/'.$value['image']) }}" alt="">
               </div>
               <a href="" class="add_cart_btn">
                 <span>
@@ -50,7 +51,7 @@ $productsShow = $product;
                 </span>
               </a>
             </div>
-            
+
             <div class="detail-box">
               <h5>
                 <?php echo $value['name'] ?>
@@ -77,8 +78,8 @@ $productsShow = $product;
     <div class="store-filter clearfix" id="phantrang">
       <ul class="store-pagination" style="margin-top: 40px;">
         <?php
-          $sizeLists = count($productsShow);
-          var_dump($sizeLists);
+        $sizeLists = count($productsShow);
+        var_dump($sizeLists);
         ?>
         <li>1</li>
         <li>2</li>

@@ -20,8 +20,8 @@ class UserSeeder extends Seeder
             [
                 'name' => "Quoc Hoang",
                 'email' => "quochoang".'@gmail.com',
-                //'password' => Hash::make('password'),
-                'password' => "123456",
+                'password' => Hash::make('123456'),
+                //'password' => "123456",
                 'address' => "Phu Yen",
                 'phonenumber' => "0787539285",
                 'created_at' => date("Y-m-d H:i:s"),
@@ -32,8 +32,8 @@ class UserSeeder extends Seeder
             [
                 'name' => "Van Thanh",
                 'email' => "vanthanh".'@gmail.com',
-                //'password' => Hash::make('password'),
-                'password' => "123456",
+                'password' => Hash::make('123456'),
+                //'password' => "123456",
                 'address' => "Binh Dinh",
                 'phonenumber' => "0787539285",
                 'created_at' => date("Y-m-d H:i:s"),
