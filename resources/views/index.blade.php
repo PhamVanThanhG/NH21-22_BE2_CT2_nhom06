@@ -128,19 +128,26 @@ $productsShow = $getproduct;
                 <span>
                   Add To Cart<br>
                 </span>
-                <span>
-                  Detail
-                </span>
               </a>
+              
+             
+             
             </div>
+            
+            
             
             <div class="detail-box">
               <h5>
                 <?php echo $value['name'] ?>
               </h5>
+              <a href="" class="detail_btn">
+                <span>
+                  Detail<br>
+                </span>
+              </a>
               <div class="product_info">
                 <h5>
-                  <span><?php echo (number_format($value['price'])) ?> VND</span>
+                  <span><?php echo (number_format($value['price'])) ?> USD</span>
                 </h5>
                 <div class="star_container">
                   <i class="fa fa-star" aria-hidden="true"></i>

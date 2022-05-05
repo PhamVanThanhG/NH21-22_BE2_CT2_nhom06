@@ -455,6 +455,7 @@ a:focus {
   z-index: 3;
 }
 
+
 .product_section .box .img-box .add_cart_btn:hover {
   background-color: #f3c93e;
   color: #ffffff;
@@ -485,6 +486,18 @@ a:focus {
           flex-direction: column;
   width: 100%;
 }
+.product_section .box .detail-box .detail_btn{
+  background-color: #3071c7; /* Green */
+  border: none;
+  color: white;
+  width: 100px;
+  margin: 5px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
 
 .product_section .box .product_info {
   display: -webkit-box;
