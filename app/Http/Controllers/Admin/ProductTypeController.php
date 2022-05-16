@@ -23,7 +23,7 @@ class ProductTypeController extends Controller
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
             $filename = time().'.'.$ext;
-            $file->move('assets/uploads/category'.$filename);
+            $file->move('../resources/images/',$filename);
             $product_type ->image = $filename;
         }
         $product_type->type_name = $request->input('name');
