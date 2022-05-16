@@ -1,7 +1,7 @@
-@extends('master');
-@section('content');
+@extends('master')
+@section('content')
 <?php
-$productsShow = $getproduct;
+$productsShow = $product;
 ?>
     <!-- slider section -->
     <section class="slider_section ">

@@ -24,9 +24,9 @@ class UserSeeder extends Seeder
                 //'password' => "123456",
                 'address' => "Phu Yen",
                 'phonenumber' => "0787539285",
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => '2017-04-27',
                 'role' => 1,
-                'birthday' => date("Y-m-d H:i:s"),
+                'birthday' => '2000-04-11',
 
             ],
             [
@@ -36,9 +36,9 @@ class UserSeeder extends Seeder
                 //'password' => "123456",
                 'address' => "Binh Dinh",
                 'phonenumber' => "0787539285",
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => '2020-05-29',
                 'role' => 1,
-                'birthday' => date("Y-m-d H:i:s"),
+                'birthday' => '2002-12-05',
 
             ],
            

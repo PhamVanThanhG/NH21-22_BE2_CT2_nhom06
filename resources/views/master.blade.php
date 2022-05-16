@@ -1,3 +1,8 @@
+<?php
+$productsShow = $product;
+$sizeLists = count($product);
+$index = $sizeLists / 6 + 1;
+?>
 <!DOCTYPE html>
 <html>
 
@@ -37,7 +42,6 @@
 </head>
 
 <body class="sub_page">
-
   <div class="hero_area">
     <!-- header section strats -->
     <header class="header_section">
@@ -409,6 +413,36 @@
       ?>`
       }
     })
+    <?php
+    for ($j = 1; $j <= $index + 1; $j++) {
+    ?>
+      const chuyentrang<?php echo $j ?> = document.getElementById('chuyentrang<?php echo $j ?>');
+    <?php
+    }
+    for ($j = 1; $j <= $index + 1; $j++) {
+    ?>
+      chuyentrang<?php echo $j ?>.addEventListener("click", () => {
+        if (!chuyentrang<?php echo $j ?>.classList.contains('activee')) {
+          show.innerHTML = '';
+          //Xoa them class active
+          chuyentrang<?php echo $j ?>.classList.add('activee');
+          <?php
+          for ($k = 1; $k <= $index + 1; $k++) {
+            if ($k != $j) {
+          ?>
+              if (chuyentrang<?php echo $k ?>.classList.contains('activee')) {
+                chuyentrang<?php echo $k ?>.classList.remove('activee');
+              }
+          <?php
+            }
+          }
+          ?>
+          //Update show
+        }
+      })
+    <?php
+    }
+    ?>
   </script>
 
 

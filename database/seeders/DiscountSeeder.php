@@ -25,6 +25,10 @@ class DiscountSeeder extends Seeder
             ],
             [
                 'active' => false,
+                'values' => 0.15,
+            ],
+            [
+                'active' => false,
                 'values' => 0,
             ]
         ]);

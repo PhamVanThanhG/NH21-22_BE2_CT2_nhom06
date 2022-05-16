@@ -28,7 +28,7 @@ class RatingSeeder extends Seeder
             [
                 'product_id' => 2,
                 'user_id' => 2,
-                'rating_value' => 5,
+                'rating_value' => 4,
                 'comment' => "San pham khong tot",
                 'created_at' => date("Y-m-d H:i:s"),
 
@@ -39,11 +39,7 @@ class RatingSeeder extends Seeder
                 'rating_value' => 2,
                 'comment' => "San pham tam duoc",
                 'created_at' => date("Y-m-d H:i:s"),
-
             ],
-            
-           
-           
         ]);
         //
     }

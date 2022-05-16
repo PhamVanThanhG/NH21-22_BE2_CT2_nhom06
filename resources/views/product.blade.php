@@ -1,7 +1,28 @@
 @extends('master')
 @section('content')
 <?php
+function getRatingByProductId($array, $productid)
+{
+  $result = array();
+  for ($i = 0; $i < count($array); $i++) {
+    if ($array[$i]['product_id'] == $productid) {
+      array_push($result, $array[$i]);
+    }
+  }
+  return $result;
+}
+
+function getRatingValue($array)
+{
+  $result = 0;
+  for ($i = 0; $i < count($array); $i++) {
+    $result += $array[$i]['rating_value'];
+  }
+  return ceil($result / count($array));
+}
 $productsShow = $product;
+$sizeLists = count($product);
+$index = $sizeLists / 6 + 1;
 ?>
 <!-- product section -->
 
@@ -24,7 +45,9 @@ $productsShow = $product;
     </ul>
     <div class="row" id="productShow">
       <?php
-      foreach ($productsShow as $value) {
+      for ($i = 0; $i < 6; $i++) {
+        //count($productsShow)
+        $value = $productsShow[$i];
       ?>
         <div class="col-sm-6 col-lg-4">
           <div class="box">
@@ -39,34 +62,83 @@ $productsShow = $product;
               }
               ?>
               <div style="position: absolute;">
-                <!-- <img src="http://127.0.0.1:8000/images/<?php echo ($value['image']) ?>" alt=""> -->
                 <img src="{{ asset('images/'.$value['image']) }}" alt="">
               </div>
               <a href="" class="add_cart_btn">
                 <span>
                   Add To Cart<br>
                 </span>
-                <span>
-                  Detail
-                </span>
               </a>
             </div>
-
             <div class="detail-box">
-              <h5>
-                <?php echo $value['name'] ?>
-              </h5>
+              <a href="#">
+                <h5>
+                  <?php echo $value['name'] ?>
+                </h5>
+              </a>
               <div class="product_info">
                 <h5>
                   <span>$</span><?php echo (number_format($value['price'])) ?>
                 </h5>
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
+                <?php
+                $ratingProduct = getRatingByProductId($rating, $value['id']);
+                if (count($ratingProduct) > 0) {
+                ?>
+                  <div class="star_container">
+                    <?php
+                    $rating_value = getRatingValue($ratingProduct);
+                    if ($rating_value == 1) {
+                    ?>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                      <span>(<?php echo count($ratingProduct) ?>)</span>
+                    <?php
+                    } else if ($rating_value == 2) {
+                    ?>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                      <span style="color: black;">(<?php echo count($ratingProduct) ?>)</span>
+                    <?php
+                    } else if ($rating_value == 3) {
+                    ?>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                      <span style="color: black;">(<?php echo count($ratingProduct) ?>)</span>
+                    <?php
+                    } else if ($rating_value == 4) {
+                    ?>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                      <span style="color: black;">(<?php echo count($ratingProduct) ?>)</span>
+                    <?php
+                    } else if ($rating_value == 5) {
+                    ?>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <span style="color: black;">(<?php echo count($ratingProduct) ?>)</span>
+                    <?php
+                    }
+                    ?>
+
+                  </div>
+                <?php
+                }
+                ?>
               </div>
             </div>
           </div>
@@ -77,14 +149,15 @@ $productsShow = $product;
     </div>
     <div class="store-filter clearfix" id="phantrang">
       <ul class="store-pagination" style="margin-top: 40px;">
+        <li id="chuyentrang1" class="activee">1</li>
         <?php
-        $sizeLists = count($productsShow);
-        var_dump($sizeLists);
+        // $index = $sizeLists / 6 + 1;
+        for ($j = 2; $j <= $index; $j++) {
         ?>
-        <li>1</li>
-        <li>2</li>
-        <li class="activee">3</li>
-        <li>4</li>
+          <li id="chuyentrang<?php echo $j ?>"><?php echo $j ?></li>
+        <?php
+        }
+        ?>
       </ul>
     </div>
   </div>
