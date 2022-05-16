@@ -2,6 +2,25 @@
 @section('content')
 <?php
 $productsShow = $product;
+function getRatingByProductId($array, $productid)
+{
+  $result = array();
+  for ($i = 0; $i < count($array); $i++) {
+    if ($array[$i]['product_id'] == $productid) {
+      array_push($result, $array[$i]);
+    }
+  }
+  return $result;
+}
+
+function getRatingValue($array)
+{
+  $result = 0;
+  for ($i = 0; $i < count($array); $i++) {
+    $result += $array[$i]['rating_value'];
+  }
+  return ceil($result / count($array));
+}
 ?>
     <!-- slider section -->
     <section class="slider_section ">

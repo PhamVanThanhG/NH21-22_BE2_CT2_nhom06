@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +25,4 @@ use App\Http\Controllers\UserController;
 // })->middleware(['auth'])->name('dashboard');
 
 // require __DIR__.'/auth.php';
-Route::get('/{page?}', [UserController::class, 'goTo']);
+Route::get('/{page?}', [ProductController::class, 'goTo']);

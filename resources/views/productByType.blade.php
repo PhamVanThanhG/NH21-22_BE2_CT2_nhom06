@@ -34,11 +34,19 @@ $index = $sizeLists / 6 + 1;
       </h2>
     </div>
     <ul class="filters_menu">
-      <a href="{{ url('/product')}}"><li class="active" id="all">All</li></a>
+      <a href="{{ url('/product')}}"><li>All</li></a>
       <?php
       foreach ($product_type as $value) {
+        if ($_GET['typeid'] == $value['id']) {
+          ?>
+          <a href="{{ url('/productByType?typeid='.$value['id'])}}"><li class="active"><?php echo ($value['type_name']) ?></li></a>
+          <?php
+        }else{
+          ?>
+          <a href="{{ url('/productByType?typeid='.$value['id'])}}"><li><?php echo ($value['type_name']) ?></li></a>
+          <?php
+        }
       ?>
-        <a href="{{ url('/productByType?typeid='.$value['id'])}}"><li id="{{'type'.$value['id']}}"><?php echo ($value['type_name']) ?></li></a>
       <?php
       }
       ?>
@@ -46,7 +54,6 @@ $index = $sizeLists / 6 + 1;
     <div class="row" id="productShow">
       <?php
       for ($i = 0; $i < 6; $i++) {
-        //count($productsShow)
         $value = $productsShow[$i];
       ?>
         <div class="col-sm-6 col-lg-4">
