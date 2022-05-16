@@ -9,7 +9,10 @@ class Product_Type extends Model
 {
     use HasFactory;
     protected $table = 'product_type';
-    public $timestamps = false;
+    protected $fillabe = [
+       'type_name',
+       'image', 
+    ];
     function product(){
         return $this->hasMany(Product::class, 'type_id', 'id');
     }
