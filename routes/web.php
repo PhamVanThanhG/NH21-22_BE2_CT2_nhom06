@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\ProductTypeController;
 use App\Http\Controllers\ProductDetailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -43,6 +44,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     Route::get('/producttype','Admin\ProductTypeController@index');
     Route::get('/add_product_type','Admin\ProductTypeController@add');
     Route::post('/insert_product_type','Admin\ProductTypeController@insert');
+    Route::get('edit_product_type/{id}',[ProductTypeController::class,'edit']);
+    Route::put('update_product_type/{id}',[ProductTypeController::class,'update']);
+    Route::get('delete_product_type/{id}',[ProductTypeController::class,'delete']);
  });
 
 Route::get("/index", [ProductController::class, 'index']);
