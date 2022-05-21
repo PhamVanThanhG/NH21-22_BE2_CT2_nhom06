@@ -1,8 +1,3 @@
-<?php
-$productsShow = $product;
-$sizeLists = count($product);
-$index = $sizeLists / 6 + 1;
-?>
 <!DOCTYPE html>
 <html>
 
@@ -39,6 +34,25 @@ $index = $sizeLists / 6 + 1;
   <!-- <link href="css/responsive.css" rel="stylesheet" /> -->
   <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
 
+
+  <!-- detail css -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+<!-- Bootstrap -->
+  <!-- <link type="text/css" rel="stylesheet" href="{{ asset('css/css/bootstrap.min.css') }}" /> -->
+
+<!-- Slick -->
+<link type="text/css" rel="stylesheet" href="{{ asset('css/css/slick.css') }}"/>
+<link type="text/css" rel="stylesheet" href="{{ asset('css/css/slick-theme.css') }}"/>
+
+<!-- nouislider -->
+<link type="text/css" rel="stylesheet" href="{{ asset('css/css/nouislider.min.css') }}"/>
+
+<!-- Font Awesome Icon -->
+<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+
+<!-- Custom stlylesheet -->
+<link type="text/css" rel="stylesheet" href="{{ asset('css/css/style.css') }}"/>
 </head>
 
 <body class="sub_page">
@@ -89,7 +103,7 @@ $index = $sizeLists / 6 + 1;
       <div class="header_bottom">
         <div class="container-fluid">
           <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="index">
+            <a class="navbar-brand" href="{{ url('/index')}}">
               <span>
                 Minics
               </span>
@@ -105,16 +119,16 @@ $index = $sizeLists / 6 + 1;
                   <a class="nav-link" href="{{ url('/index')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="about"> About</a>
+                  <a class="nav-link" href="{{ url('/about')}}"> About</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="product">Products</a>
+                  <a class="nav-link" href="{{ url('/product')}}">Products</a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="why">Why Us</a>
+                  <a class="nav-link" href="{{ url('/why')}}">Why Us</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="testimonial">Testimonial</a>
+                  <a class="nav-link" href="{{ url('/testimonial')}}">Testimonial</a>
                 </li>
               </ul>
             </div>
@@ -128,7 +142,7 @@ $index = $sizeLists / 6 + 1;
   @yield('content')
 
   <!-- info section -->
-  <section class="info_section ">
+  <section class="info_section">
     <div class="container">
       <div class="row">
         <div class="col-md-3">
@@ -250,6 +264,13 @@ $index = $sizeLists / 6 + 1;
   <!-- custom js -->
   <script src="{{ asset('js/custom.js') }}"></script>
   <script src="{{ asset('js/script.js') }}"></script>
+  <!-- detail script -->
+  <script src="{{ asset('js/js/jquery.min.js') }}"></script>
+	<script src="{{ asset('js/js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('js/js/slick.min.js') }}"></script>
+	<script src="{{ asset('js/js/nouislider.min.js') }}"></script>
+	<script src="{{ asset('js/js/jquery.zoom.min.js') }}"></script>
+	<script src="{{ asset('js/js/main.js') }}"></script>
 
 
 </body>

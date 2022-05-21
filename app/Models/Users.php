@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rating extends Model
+class Users extends Model
 {
     use HasFactory;
-    protected $table = 'rating';
+    protected $table = 'users';
     public $timestamps = false;
-    function user(){
-        return $this->belongsTo(Users::class, 'user_id');
+
+    function rating(){
+        return $this->hasMany(Rating::class, 'user_id', 'id');
     }
 }

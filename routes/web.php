@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductDetailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Models\Product;
@@ -47,3 +48,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get("/index", [ProductController::class, 'index']);
 Route::get("/product", [ProductController::class, 'product']);
 Route::get("/productByType", [ProductController::class, 'productByType']);
+Route::get("/detail/{id}", [ProductDetailController::class, 'detail']);

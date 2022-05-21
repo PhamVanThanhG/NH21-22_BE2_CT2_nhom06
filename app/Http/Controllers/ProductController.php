@@ -33,4 +33,5 @@ class ProductController extends Controller
         $rating = Rating::all();
         return view("productByType", ['product' => $product, 'product_type' => $product_type, 'rating' => $rating, 'typeid' => $typeid]);
     }
+
 }

@@ -75,14 +75,21 @@ $index = $sizeLists / 6 + 1;
               </a>
             </div>
             <div class="detail-box">
-              <a href="#">
+            <a href="/detail/{{ $value['id'] }}">
                 <h5>
                   <?php echo $value['name'] ?>
                 </h5>
               </a>
               <div class="product_info">
-                <h5>
-                  <span>$</span><?php echo (number_format($value['price'])) ?>
+              <h5>
+                  <span>$</span><?php echo (number_format($value['price'] * (1 - $value->discount->values))) ?>
+                  <?php
+                    if ($value->discount->active != 0) {
+                      ?>
+                      <del class="product-old-price" style="margin-left: 8px;">$<?php echo(number_format($value['price'])) ?></del>
+                      <?php
+                    }
+                  ?>
                 </h5>
                 <?php
                 $ratingProduct = getRatingByProductId($rating, $value['id']);
@@ -212,14 +219,21 @@ $index = $sizeLists / 6 + 1;
               </a>
             </div>
             <div class="detail-box">
-              <a href="#">
+            <a href="/detail/{{ $value['id'] }}">
                 <h5>
                   <?php echo $value['name'] ?>
                 </h5>
               </a>
               <div class="product_info">
-                <h5>
-                  <span>$</span><?php echo (number_format($value['price'])) ?>
+              <h5>
+                  <span>$</span><?php echo (number_format($value['price'] * (1 - $value->discount->values))) ?>
+                  <?php
+                    if ($value->discount->active != 0) {
+                      ?>
+                      <del class="product-old-price" style="margin-left: 8px;">$<?php echo(number_format($value['price'])) ?></del>
+                      <?php
+                    }
+                  ?>
                 </h5>
                 <?php
                                 $ratingProduct = getRatingByProductId($rating, $value['id']);
