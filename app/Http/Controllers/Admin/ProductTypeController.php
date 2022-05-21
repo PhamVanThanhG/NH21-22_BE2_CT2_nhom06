@@ -10,7 +10,8 @@ class ProductTypeController extends Controller
 {
     public function index()
     {
-        return view('admin.product_type.index');
+        $product_type = Product_Type::all();
+        return view('admin.product_type.index',compact('product_type'));
     }
     public function add()
     {
@@ -23,7 +24,7 @@ class ProductTypeController extends Controller
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
             $filename = time().'.'.$ext;
-            $file->move('../resources/images/',$filename);
+            $file->move('images/',$filename);
             $product_type ->image = $filename;
         }
         $product_type->type_name = $request->input('name');
