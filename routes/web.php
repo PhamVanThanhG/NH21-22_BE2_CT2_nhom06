@@ -43,3 +43,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     Route::get('/add_product_type','Admin\ProductTypeController@add');
     Route::post('/insert_product_type','Admin\ProductTypeController@insert');
  });
+
+Route::get("/index", [ProductController::class, 'index']);
+Route::get("/product", [ProductController::class, 'product']);
+Route::get("/productByType", [ProductController::class, 'productByType']);
