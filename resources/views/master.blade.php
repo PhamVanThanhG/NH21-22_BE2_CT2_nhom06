@@ -76,17 +76,31 @@
                 </span>
               </a>
             </div>
-            <from class="search_form">
+            <form class="search_form">
               <input type="text" class="form-control" placeholder="Search here...">
               <button class="" type="submit">
                 <i class="fa fa-search" aria-hidden="true"></i>
               </button>
-            </from>
+            </form>
             <div class="user_option_box">
-              <a href="{{  url('/login')}}" class="account-link">
+              <a href="{{ url('/login') }}" class="account-link">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 <span>
-                  My Account
+                  
+                  @if (session('user_name'))
+                <span>
+                    {{ session('user_name') }}
+                </span>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">>
+                  {{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+              </form>
+            
+            @else
+            My Account
+            @endif
                 </span>
               </a>
               <a href="{{ url('/cart')}}" class="cart-link">
