@@ -89,7 +89,7 @@
                   My Account
                 </span>
               </a>
-              <a href="" class="cart-link">
+              <a href="{{ url('/cart')}}" class="cart-link">
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 <span>
                   Cart

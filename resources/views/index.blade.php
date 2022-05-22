@@ -54,25 +54,69 @@ $index = $sizeLists / 6 + 1;
       </div>
       <div class="carousel-item">
         <div class="container ">
+            <!-- Featured product -->
           <div class="row">
-            <div class="col-md-6">
-              <div class="detail-box">
-                <h1>
-                  Welcome to our shop
-                </h1>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quam velit saepe dolorem deserunt quo quidem ad optio.
-                </p>
-                <a href="">
-                  Read More
-                </a>
+            <div class="col-md-12">
+              <div class="section-title text-center">
+                <h3 class="title">Related Products</h3>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="img-box">
-                <img src="../images/slider-img.png" alt="">
+            <?php
+            for ($i = 0; $i < count($productRelated); $i++) {
+              $value = $productRelated[$i];
+            ?>
+              <!-- product -->
+              <div class="col-md-3 col-xs-6">
+                <div class="product">
+                  <div class="product-img">
+                    <img src="{{ asset('images/'.$value['image']) }}" alt="" height="170">
+                  </div>
+                  <div class="product-body">
+                    <h3 class="product-name"><a href="{{ url('/detail/'.$value['id'])}}">{{ $value['name'] }}</a></h3>
+                    <h4 class="product-price">
+                      $<?php echo (number_format($value['price'] * (1 - $value->discount->values))) ?>
+                      <?php
+                      if ($value->discount->values != 0) {
+                      ?>
+                        <del class="product-old-price">$<?php echo (number_format($value['price'])) ?></del>
+                      <?php
+                      }
+                      ?>
+                    </h4>
+                    <div class="product-rating">
+                    </div>
+                    <div class="product-btns">
+                      <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to
+                          wishlist</span></button>
+                      <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to
+                          compare</span></button>
+                      <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick
+                          view</span></button>
+                    </div>
+                  </div>
+                  <div class="add-to-cart">
+                    <a href="add_cart.php?id_product=1&amp;key=2"><button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
+                  </div>
+                </div>
+                <?php
+                if ($value->discount->values != 0) {
+                ?>
+                  <div class="product-label">
+                    <span class="sale">-<?php echo ($value->discount->values * 100) ?>%</span>
+                  </div>
+                <?php
+                }
+                ?>
+
               </div>
-            </div>
+              <!-- /product -->
+            <?php
+            }
+            ?>
+            <!-- <div class="store-filter clearfix">
+					<ul class="store-pagination text-center">
+											</ul>
+				</div> -->
           </div>
         </div>
       </div>
@@ -163,11 +207,11 @@ $index = $sizeLists / 6 + 1;
                 <h5>
                   <span>$</span><?php echo (number_format($value['price'] * (1 - $value->discount->values))) ?>
                   <?php
-                    if ($value->discount->active != 0) {
-                      ?>
-                      <del class="product-old-price" style="margin-left: 8px;">$<?php echo(number_format($value['price'])) ?></del>
-                      <?php
-                    }
+                  if ($value->discount->active != 0) {
+                  ?>
+                    <del class="product-old-price" style="margin-left: 8px;">$<?php echo (number_format($value['price'])) ?></del>
+                  <?php
+                  }
                   ?>
                 </h5>
                 <?php
@@ -493,10 +537,10 @@ $index = $sizeLists / 6 + 1;
                               $end = 0;
                               if (($j * 6) > $sizeLists) {
                                 $end = $sizeLists;
-                              }else{
+                              } else {
                                 $end = $j * 6;
                               }
-                              for ($i = (($j -1) * 6); $i < $end; $i++) {
+                              for ($i = (($j - 1) * 6); $i < $end; $i++) {
                                 $value = $productsShow[$i];
                               ?>
         <div class="col-sm-6 col-lg-4">
@@ -530,12 +574,12 @@ $index = $sizeLists / 6 + 1;
               <h5>
                   <span>$</span><?php echo (number_format($value['price'] * (1 - $value->discount->values))) ?>
                   <?php
-                    if ($value->discount->active != 0) {
-                      ?>
-                      <del class="product-old-price" style="margin-left: 8px;">$<?php echo(number_format($value['price'])) ?></del>
-                      <?php
-                    }
+                                if ($value->discount->active != 0) {
                   ?>
+                      <del class="product-old-price" style="margin-left: 8px;">$<?php echo (number_format($value['price'])) ?></del>
+                      <?php
+                                }
+                      ?>
                 </h5>
                 <?php
                                 $ratingProduct = getRatingByProductId($rating, $value['id']);

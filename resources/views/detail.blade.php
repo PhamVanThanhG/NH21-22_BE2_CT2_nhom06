@@ -500,7 +500,6 @@ function getArrayRatingValue($array)
     <div class="container">
         <!-- row -->
         <div class="row">
-
             <div class="col-md-12">
                 <div class="section-title text-center">
                     <h3 class="title">Related Products</h3>
@@ -517,8 +516,7 @@ function getArrayRatingValue($array)
                             <img src="{{ asset('images/'.$value['image']) }}" alt="" height="170">
                         </div>
                         <div class="product-body">
-                            <p class="product-category">{{ $value['name'] }}</p>
-                            <h3 class="product-name"><a href="detail.php?id=1"></a></h3>
+                            <h3 class="product-name"><a href="{{ url('/detail/'.$value['id'])}}">{{ $value['name'] }}</a></h3>
                             <h4 class="product-price">
                                 $<?php echo (number_format($value['price'] * (1 - $value->discount->values))) ?>
                                 <?php

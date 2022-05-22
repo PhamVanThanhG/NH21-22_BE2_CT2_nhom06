@@ -49,3 +49,4 @@ Route::get("/index", [ProductController::class, 'index']);
 Route::get("/product", [ProductController::class, 'product']);
 Route::get("/productByType", [ProductController::class, 'productByType']);
 Route::get("/detail/{id}", [ProductDetailController::class, 'detail']);
+Route::get("/cart", [ProductController::class, 'cart']);
