@@ -23,8 +23,8 @@
                        <img class="type-image" src="{{asset('images/'.$item->image)}}" alt=""> 
                     </td>
                     <td>
-                        <button class="btn btn-primary">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
+                        <a href="{{url('edit_product_type/'.$item->id)}}" class="btn btn-primary">Edit</a>
+                        <a href="{{url('delete_product_type/'.$item->id)}}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
                 @endforeach
