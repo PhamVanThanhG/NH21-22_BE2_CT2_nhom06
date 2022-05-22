@@ -12,7 +12,6 @@ use GuzzleHttp\Handler\Proxy;
 class UserController extends Controller
 {
     function index(){
-        $data = Product::all();
-        return view('index2',['data'=>$data]);
+       
     }
 }

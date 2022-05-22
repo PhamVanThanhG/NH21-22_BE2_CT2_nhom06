@@ -30,8 +30,11 @@ use App\Models\Product;
 // Route::get('/{page?}', [ProductController::class, 'goTo']);
 
 //Chay Admin
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/login', function () {
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -49,7 +52,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     Route::get('delete_product_type/{id}',[ProductTypeController::class,'delete']);
  });
 
-Route::get("/index", [ProductController::class, 'index']);
+Route::get("/", [ProductController::class, 'index']);
 Route::get("/product", [ProductController::class, 'product']);
 Route::get("/productByType", [ProductController::class, 'productByType']);
 Route::get("/detail/{id}", [ProductDetailController::class, 'detail']);
