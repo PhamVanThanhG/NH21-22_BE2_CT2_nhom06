@@ -33,13 +33,14 @@
   <!-- responsive style -->
   <!-- <link href="css/responsive.css" rel="stylesheet" /> -->
   <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-
+  
 
   <!-- detail css -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
 <!-- Bootstrap -->
   <!-- <link type="text/css" rel="stylesheet" href="{{ asset('css/css/bootstrap.min.css') }}" /> -->
+  {{-- <link href="{{ asset('frontend/css/bootstrap5.css') }}" rel="stylesheet"> --}}
 
 <!-- Slick -->
 <link type="text/css" rel="stylesheet" href="{{ asset('css/css/slick.css') }}"/>
@@ -83,26 +84,48 @@
               </button>
             </form>
             <div class="user_option_box">
-              <a href="{{ url('/login') }}" class="account-link">
+              {{-- <a href="{{ url('/login') }}" class="account-link">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 <span>
-                  
-                  @if (session('user_name'))
-                <span>
-                    {{ session('user_name') }}
-                </span>
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">>
-                  {{ __('Logout') }}
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                  @csrf
-              </form>
-            
-            @else
             My Account
-            @endif
                 </span>
-              </a>
+              </a> --}}
+              @guest
+                            @if (Route::has('login'))
+                                <div class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </div>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <div class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </div>
+                            @endif
+                        @else
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ Auth::user()->name }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <li>
+                                  <a class="dropdown-item" href="#">
+                                      My Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">>
+                                        {{ __('Logout') }}
+                                      </a>
+                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                  </li>
+                             
+                            </ul>
+                        </div>
+                            
+                        @endguest
               <a href="{{ url('/cart')}}" class="cart-link">
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 <span>
@@ -285,6 +308,7 @@
 	<script src="{{ asset('js/js/nouislider.min.js') }}"></script>
 	<script src="{{ asset('js/js/jquery.zoom.min.js') }}"></script>
 	<script src="{{ asset('js/js/main.js') }}"></script>
+  <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}" defer></script>
 
 
 </body>
