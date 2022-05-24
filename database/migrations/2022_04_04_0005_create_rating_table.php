@@ -14,12 +14,12 @@ class CreateRatingTable extends Migration
     public function up()
     {
         Schema::create('rating', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('user_id');
+            $table->id();
+            $table->BigInteger('product_id');
+            $table->BigInteger('user_id');
             $table->double('rating_value', 2, 1);
             $table->string('comment');
-            $table->timestamp('created_at')->useCurrent();
+            $table->timestamps();
            
 
 

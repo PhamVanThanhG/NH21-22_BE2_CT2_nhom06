@@ -22,6 +22,7 @@
 
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet"> <!-- range slider -->
+  
 
   <!-- font awesome style -->
   <!-- <link href="css/font-awesome.min.css" rel="stylesheet" /> -->
@@ -93,29 +94,29 @@
               @guest
                             @if (Route::has('login'))
                                 <div class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}"><i class="fa-solid fa-right-to-bracket"></i> {{ __('Login') }}</a>
                                 </div>
                             @endif
 
                             @if (Route::has('register'))
                                 <div class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}"><i class="fa-solid fa-registered"></i> {{ __('Register') }}</a>
                                 </div>
                             @endif
                         @else
                         <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ Auth::user()->name }}
+                              <i class="fa-solid fa-user"></i> {{ Auth::user()->name }}
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
                               <li>
                                   <a class="dropdown-item" href="#">
-                                      My Profile
+                                    <i class="fa-solid fa-address-card"></i> My Profile
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">>
-                                        {{ __('Logout') }}
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                      <i class="fa-solid fa-circle-xmark"></i> {{ __('Logout') }}
                                       </a>
                                       <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
@@ -140,7 +141,7 @@
       <div class="header_bottom">
         <div class="container-fluid">
           <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="{{ url('/index')}}">
+            <a class="navbar-brand" href="{{ url('/')}}">
               <span>
                 Minics
               </span>
@@ -153,7 +154,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ">
                 <li class="nav-item ">
-                  <a class="nav-link" href="{{ url('/index')}}">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="{{ url('/')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{{ url('/about')}}"> About</a>
@@ -309,6 +310,11 @@
 	<script src="{{ asset('js/js/jquery.zoom.min.js') }}"></script>
 	<script src="{{ asset('js/js/main.js') }}"></script>
   <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}" defer></script>
+  <script src="https://kit.fontawesome.com/fca7e71b15.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  @if (session('status'))
+    <script>swal("{{session('status')}}");</script>
+    @endif
 
 
 </body>

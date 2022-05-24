@@ -24,7 +24,7 @@ class DiscountSeeder extends Seeder
                 'values' => 0.2,
             ],
             [
-                'active' => false,
+                'active' => true,
                 'values' => 0.15,
             ],
             [

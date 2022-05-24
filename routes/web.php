@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\ProductTypeController;
+use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\ProductDetailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -51,6 +52,9 @@ Auth::routes();
     Route::get('edit_product_type/{id}',[ProductTypeController::class,'edit']);
     Route::put('update_product_type/{id}',[ProductTypeController::class,'update']);
     Route::get('delete_product_type/{id}',[ProductTypeController::class,'delete']);
+    Route::get('products',[ProductsController::class,'index']);
+    Route::get('add_products',[ProductsController::class,'add']);
+    Route::post('insert_products',[ProductsController::class,'insert']);
  });
 
 Route::get("/", [ProductController::class, 'index']);

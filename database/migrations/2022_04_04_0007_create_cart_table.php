@@ -14,11 +14,12 @@ class CreateCartTable extends Migration
     public function up()
     {
         Schema::create('cart', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('user_id');
+            $table->id();
+            $table->BigInteger('product_id');
+            $table->BigInteger('user_id');
             $table->integer('total_price');
             $table->integer('quantity');
+            $table->timestamps();
 
 
             

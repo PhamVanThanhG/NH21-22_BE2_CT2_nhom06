@@ -9,7 +9,6 @@ class Users extends Model
 {
     use HasFactory;
     protected $table = 'users';
-    public $timestamps = false;
 
     function rating(){
         return $this->hasMany(Rating::class, 'user_id', 'id');

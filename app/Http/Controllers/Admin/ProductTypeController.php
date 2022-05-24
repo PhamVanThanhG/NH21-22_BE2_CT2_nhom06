@@ -31,7 +31,7 @@ class ProductTypeController extends Controller
         }
         $product_type->type_name = $request->input('name');
         $product_type->save();
-        return redirect('/dashboard')->with('status',"Add Successfully!");
+        return redirect('/producttype')->with('status',"Add Successfully!");
     }
     public function edit($id)
     {

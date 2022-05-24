@@ -9,7 +9,6 @@ class Rating extends Model
 {
     use HasFactory;
     protected $table = 'rating';
-    public $timestamps = false;
     function user(){
         return $this->belongsTo(Users::class, 'user_id');
     }

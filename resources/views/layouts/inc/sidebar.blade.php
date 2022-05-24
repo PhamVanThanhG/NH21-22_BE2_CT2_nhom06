@@ -9,22 +9,34 @@
       </a></div>
     <div class="sidebar-wrapper">
       <ul class="nav">
-        <li class="nav-item active  ">
-          <a class="nav-link" href="#">
+        <li class="nav-item {{Request::is('dashboard')?'active':'';}}  ">
+          <a class="nav-link" href="{{url('dashboard')}}">
             <i class="material-icons">dashboard</i>
             <p>Dashboard</p>
           </a>
         </li>
-        <li class="nav-item ">
+        <li class="nav-item {{Request::is('producttype')?'active':'';}} ">
           <a class="nav-link" href="{{url('producttype')}}">
             <i class="material-icons">person</i>
             <p>Product Type</p>
           </a>
         </li>
-        <li class="nav-item ">
+        <li class="nav-item {{Request::is('add_product_type')?'active':'';}}">
           <a class="nav-link" href="{{url('add_product_type')}}">
             <i class="material-icons">person</i>
             <p>Add Product Type</p>
+          </a>
+        </li>
+        <li class="nav-item {{Request::is('products')?'active':'';}} ">
+          <a class="nav-link" href="{{url('products')}}">
+            <i class="material-icons">person</i>
+            <p>Products</p>
+          </a>
+        </li>
+        <li class="nav-item {{Request::is('add_products')?'active':'';}}">
+          <a class="nav-link" href="{{url('add_products')}}">
+            <i class="material-icons">person</i>
+            <p>Add Products</p>
           </a>
         </li>
         <li class="nav-item ">

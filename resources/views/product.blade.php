@@ -68,7 +68,7 @@ $index = $sizeLists / 6 + 1;
               <div style="position: absolute;">
                 <img src="{{ asset('images/'.$value['image']) }}" alt="">
               </div>
-              <a href="" class="add_cart_btn">
+              <a href="#" class="add_cart_btn">
                 <span>
                   Add To Cart<br>
                 </span>

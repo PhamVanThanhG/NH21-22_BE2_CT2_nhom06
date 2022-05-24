@@ -24,9 +24,9 @@ class ProductSeeder extends Seeder
             'image' => "msi-gaming-gf63-thin-11ud-i7-648vn-3.jpg",
             'price' => 2799,
             'discount_id' => 3,
-            'created_at' => '2018-07-20',
-            'feature' => true,
-            'expire_period' => 1,
+            // 'created_at' => '2018-07-20',
+            'feature' => 0,
+            
         ],
         [
             'name' => "Acer Nitro 5",
@@ -35,9 +35,9 @@ class ProductSeeder extends Seeder
             'image' => "acer-nitro-5-gaming-an515-57-5831-i5-nhqdgsv003-270721-1044374.jpg",
             'price' => 2639,
             'discount_id' => 1,
-            'created_at' => '2018-07-20',
-            'feature' => true,
-            'expire_period' => 1,
+            // 'created_at' => '2018-07-20',
+            'feature' => 0,
+            
         ],
         [
             'name' => "Dell Gaming Alienware",
@@ -46,9 +46,9 @@ class ProductSeeder extends Seeder
             'image' => "dell-gaming-alienware-m15-r6-i7-p109f001dbl-2-1.jpg",
             'price' => 6199,
             'discount_id' => 4,
-            'created_at' => '2019-02-20',
-            'feature' => true,
-            'expire_period' => 1,
+            // 'created_at' => '2019-02-20',
+            'feature' => 1,
+            
         ],
         [
             'name' => "Lenovo Gaming Legion 5",
@@ -57,9 +57,9 @@ class ProductSeeder extends Seeder
             'image' => "vi-vn-lenovo-gaming-legion-5-15ith6-i7-82jk00fnvn-2.jpg",
             'price' => 3899,
             'discount_id' => 3,
-            'created_at' => '2018-03-20',
-            'feature' => true,
-            'expire_period' => 1,
+            // 'created_at' => '2018-03-20',
+            'feature' => 0,
+            
         ],
         [
             'name' => "Asus TUF Gaming",
@@ -68,9 +68,9 @@ class ProductSeeder extends Seeder
             'image' => "vi-vn-asus-tuf-gaming-fx516pm-i7-hn002w-5.jpg",
             'price' => 3299,
             'discount_id' => 2,
-            'created_at' => '2018-07-20',
-            'feature' => true,
-            'expire_period' => 1,
+            // 'created_at' => '2018-07-20',
+            'feature' => 1,
+            
         ],
         [
             'name' => "Apple MacBook Pro M1",
@@ -79,9 +79,9 @@ class ProductSeeder extends Seeder
             'image' => "apple-macbook-pro-2020-z11c-061220-1119080.jpg",
             'price' => 4199,
             'discount_id' => 1,
-            'created_at' => '2018-07-20',
-            'feature' => false,
-            'expire_period' => 1,
+            // 'created_at' => '2018-07-20',
+            'feature' => 0,
+            
         ],
         [
             'name' => "Acer Predator Triton PT315",
@@ -90,9 +90,9 @@ class ProductSeeder extends Seeder
             'image' => "vi-vn-acer-predator-triton-300-pt315-53-71dj-i7-4.jpg",
             'price' => 4089,
             'discount_id' => 4,
-            'created_at' => '2014-07-15',
-            'feature' => false,
-            'expire_period' => 1,
+            // 'created_at' => '2014-07-15',
+            'feature' => 0,
+            
         ],
         [
             'name' => "MSI Gaming Leopard GP76",
@@ -101,9 +101,9 @@ class ProductSeeder extends Seeder
             'image' => "vi-vn-msi-gp76-11ug-i7-435vn.jpg",
             'price' => 4934,
             'discount_id' => 1,
-            'created_at' => '2020-07-15',
-            'feature' => false,
-            'expire_period' => 1,
+            // 'created_at' => '2020-07-15',
+            'feature' => 1,
+            
         ],
         [
             'name' => "MSI Gaming GS66 Stealth",
@@ -112,9 +112,9 @@ class ProductSeeder extends Seeder
             'image' => "vi-vn-msi-gaming-gs66-stealth-11ug-i7-219vn-1.jpg",
             'price' => 6074,
             'discount_id' => 3,
-            'created_at' => '2018-03-19',
-            'feature' => false,
-            'expire_period' => 1,
+            
+            'feature' => 1,
+            
         ],
         [
             'name' => "Gigabyte Gaming G5",
@@ -123,9 +123,9 @@ class ProductSeeder extends Seeder
             'image' => "vi-vn-gigabyte-gaming-g5-i5-kc5s11130sb-1.jpg",
             'price' => 2699,
             'discount_id' => 1,
-            'created_at' => date("Y-m-d H:i:s"),
-            'feature' => false,
-            'expire_period' => 1,
+            
+            'feature' => 1,
+            
         ],
         [
             'name' => "Camera TP-Link Tapo C210",
@@ -134,9 +134,9 @@ class ProductSeeder extends Seeder
             'image' => "camera-ip-360-do-3mp-tp-link-tapo-c210-2-1-org.jpg",
             'price' => 899,
             'discount_id' => 4,
-            'created_at' => '2018-09-20',
-            'feature' => true,
-            'expire_period' => 1,
+            
+            'feature' => 0,
+            
         ],
         [
             'name' => "Camera IP Cue 2E-D Trắng",
@@ -145,9 +145,9 @@ class ProductSeeder extends Seeder
             'image' => "camera-ip-1080p-imou-cue-2e-d-trang-1.jpg",
             'price' => 714,
             'discount_id' => 2,
-            'created_at' => '2018-05-20',
-            'feature' => true,
-            'expire_period' => 1,
+            
+            'feature' => 1,
+            
         ],
         [
             'name' => "Camera IP Bullet 2E-D Trắng",
@@ -156,9 +156,9 @@ class ProductSeeder extends Seeder
             'image' => "camera-ip-ngoai-troi-2mp-imou-bullet-2e-d-trang-9.jpg",
             'price' => 1253,
             'discount_id' => 1,
-            'created_at' => '2018-03-11',
-            'feature' => true,
-            'expire_period' => 1,
+            
+            'feature' => 0,
+            
         ],
         [
             'name' => "Camera Vietmap C63 Đen",
@@ -167,9 +167,9 @@ class ProductSeeder extends Seeder
             'image' => "camera-hanh-trinh-vietmap-c63-den-2-org.jpg",
             'price' => 2944,
             'discount_id' => 3,
-            'created_at' => '2018-01-01',
-            'feature' => true,
-            'expire_period' => 1,
+            
+            'feature' => 1,
+            
         ],
         [
             'name' => "Camera IP 1080P Ezviz CS-C1HC",
@@ -178,9 +178,9 @@ class ProductSeeder extends Seeder
             'image' => "camera-ip-1080p-ezviz-cs-c1hc-d0-1d2wfr-trang-2-1-org.jpg",
             'price' => 553,
             'discount_id' => 4,
-            'created_at' => '2013-07-18',
-            'feature' => true,
-            'expire_period' => 1,
+            
+            'feature' => 1,
+            
         ],
         [
             'name' => "Loa Bluetooth JBL Charge 5",
@@ -189,9 +189,9 @@ class ProductSeeder extends Seeder
             'image' => "bluetooth-jbl-charge-5-1-org.jpg",
             'price' => 399,
             'discount_id' => 4,
-            'created_at' => '2018-07-17',
-            'feature' => false,
-            'expire_period' => 1,
+            
+            'feature' => 0,
+            
         ],
         [
             'name' => "Loa Bluetooth Sony SRS",
@@ -200,9 +200,9 @@ class ProductSeeder extends Seeder
             'image' => "bluetooth-sony-srs-xb13-1-1-org.jpg",
             'price' => 116,
             'discount_id' => 1,
-            'created_at' => '2018-07-15',
-            'feature' => false,
-            'expire_period' => 1,
+            
+            'feature' => 0,
+            
         ],
         [
             'name' => "Loa Microlab B26",
@@ -211,9 +211,9 @@ class ProductSeeder extends Seeder
             'image' => "vi-tinh-microlab-b26-den-2-1.jpg",
             'price' => 274,
             'discount_id' => 3,
-            'created_at' => '2018-07-12',
-            'feature' => false,
-            'expire_period' => 1,
+            
+            'feature' => 0,
+            
         ],
         [
             'name' => "Loa Bluetooth Mozard S21",
@@ -222,9 +222,9 @@ class ProductSeeder extends Seeder
             'image' => "bluetooth-mozard-s21-xanh-1.jpg",
             'price' => 399,
             'discount_id' => 2,
-            'created_at' => '2013-07-15',
-            'feature' => false,
-            'expire_period' => 1,
+            
+            'feature' => 0,
+            
         ],
         [
             'name' => "Loa Bluetooth JBL Partybox",
@@ -233,9 +233,9 @@ class ProductSeeder extends Seeder
             'image' => "bluetooth-jbl-partybox-100-den-2-1.jpg",
             'price' => 95,
             'discount_id' => 3,
-            'created_at' => '2018-07-20',
-            'feature' => false,
-            'expire_period' => 1,
+            
+            'feature' => 0,
+            
         ],
         [
             'name' => "Laptop MSI Katana GF76",
@@ -244,9 +244,9 @@ class ProductSeeder extends Seeder
             'image' => "msi-katana-gf76-11uc-i7-441vn-3-1.jpg",
             'price' => 2799,
             'discount_id' => 2,
-            'created_at' => '2018-07-20',
-            'feature' => false,
-            'expire_period' => 1,
+            
+            'feature' => 0,
+            
         ],
         [
             'name' => "Laptop HP Gaming VICTUS 16",
@@ -255,9 +255,9 @@ class ProductSeeder extends Seeder
             'image' => "hp-gaming-victus-16-d0202tx-i5-4r0u4pa-3-1.jpg",
             'price' => 2899,
             'discount_id' => 4,
-            'created_at' => '2017-07-13',
-            'feature' => false,
-            'expire_period' => 1,
+            
+            'feature' => 0,
+            
         ],
         [
             'name' => "Laptop Asus TUF Gaming",
@@ -266,9 +266,9 @@ class ProductSeeder extends Seeder
             'image' => "asus-tuf-gaming-fx506hc-i5-hn144w-3.jpg",
             'price' => 2399,
             'discount_id' => 4,
-            'created_at' => '2017-07-13',
-            'feature' => false,
-            'expire_period' => 1,
+            
+            'feature' => 0,
+            
         ],
         [
             'name' => "Laptop MSI Creator M16",
@@ -277,9 +277,9 @@ class ProductSeeder extends Seeder
             'image' => "msi-creator-m16-a12uc-i7-292vn-12-1020x570.jpg",
             'price' => 3649,
             'discount_id' => 2,
-            'created_at' => '2017-07-13',
-            'feature' => true,
-            'expire_period' => 1,
+            
+            'feature' => 0,
+            
         ],
         [
             'name' => "Laptop HP ZBook Firefly",
@@ -288,9 +288,9 @@ class ProductSeeder extends Seeder
             'image' => "hp-zbook-firefly-14-g8-i7-275w0av-1.jpg",
             'price' => 4139,
             'discount_id' => 3,
-            'created_at' => '2007-07-15',
-            'feature' => false,
-            'expire_period' => 1,
+            
+            'feature' => 0,
+            
         ],
         [
             'name' => "Loa Bluetooth Sony Extra",
@@ -299,9 +299,9 @@ class ProductSeeder extends Seeder
             'image' => "loa-bluetooth-sony-srs-xb43-xanhduong-3-org.jpg",
             'price' => 399,
             'discount_id' => 2,
-            'created_at' => '2009-07-15',
-            'feature' => false,
-            'expire_period' => 1,
+            
+            'feature' => 0,
+            
         ],
         [
             'name' => "Loa Kéo Bluetooth Mozard",
@@ -310,9 +310,9 @@ class ProductSeeder extends Seeder
             'image' => "loa-keo-bluetooth-mozard-l0629k-den-xam-091120-1103180.jpg",
             'price' => 132,
             'discount_id' => 3,
-            'created_at' => '2007-07-20',
-            'feature' => false,
-            'expire_period' => 1,
+            
+            'feature' => 0,
+            
         ],
         [
             'name' => "Loa Bluetooth JBL GO2",
@@ -321,9 +321,9 @@ class ProductSeeder extends Seeder
             'image' => "loa-bluetooth-jbl-go2blk-den-do-up-1-org.jpg",
             'price' => 690,
             'discount_id' => 2,
-            'created_at' => '2007-09-15',
-            'feature' => false,
-            'expire_period' => 1,
+            
+            'feature' => 0,
+            
         ],
         [
             'name' => "Loa Bluetooth MozardX",
@@ -332,9 +332,9 @@ class ProductSeeder extends Seeder
             'image' => "loa-bluetooth-mozardx-bm01-den-up-1-org.jpg",
             'price' => 977,
             'discount_id' => 2,
-            'created_at' => '2003-07-20',
-            'feature' => false,
-            'expire_period' => 1,
+            
+            'feature' => 1,
+            
         ],
         [
             'name' => "Loa Bluetooth iCutes MB",
@@ -343,9 +343,9 @@ class ProductSeeder extends Seeder
             'image' => "loa-bluetooth-icutes-mb-m916-cu-den-1-org.jpg",
             'price' => 212,
             'discount_id' => 2,
-            'created_at' => '2007-02-19',
-            'feature' => false,
-            'expire_period' => 1,
+            
+            'feature' => 0,
+            
         ],
         [
             'name' => "Webcam 720P Logitech",
@@ -354,9 +354,9 @@ class ProductSeeder extends Seeder
             'image' => "webcam-720p-logitech-c310-den-2-1.jpg",
             'price' => 699,
             'discount_id' => 1,
-            'created_at' => '2007-04-19',
-            'feature' => false,
-            'expire_period' => 1,
+            
+            'feature' => 1,
+            
         ],
         [
             'name' => "Webcam 1080P A4Tech",
@@ -365,9 +365,9 @@ class ProductSeeder extends Seeder
             'image' => "webcam-1080p-a4tech-pk-920h-den-2.jpg",
             'price' => 640,
             'discount_id' => 1,
-            'created_at' => '2001-07-11',
-            'feature' => false,
-            'expire_period' => 1,
+            
+            'feature' => 0,
+            
         ],
         [
             'name' => "Webcam 480P A4Tech",
@@ -376,9 +376,8 @@ class ProductSeeder extends Seeder
             'image' => "webcam-480p-a4tech-pk-635g-bac-2.jpg",
             'price' => 360,
             'discount_id' => 1,
-            'created_at' => '2009-07-13',
-            'feature' => false,
-            'expire_period' => 1,
+            'feature' => 1,
+            
         ],
         [
             'name' => "Webcam 1080P Rapoo",
@@ -387,9 +386,8 @@ class ProductSeeder extends Seeder
             'image' => "webcam-1080p-rapoo-c260-2-2-org.jpg",
             'price' => 639,
             'discount_id' => 1,
-            'created_at' => '2018-09-18',
-            'feature' => false,
-            'expire_period' => 1,
+            'feature' => 1,
+            
         ],
 
     ],

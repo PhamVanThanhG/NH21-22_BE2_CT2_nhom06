@@ -9,7 +9,10 @@ class Discount extends Model
 {
     use HasFactory;
     protected $table = 'discount';
-    public $timestamps = false;
+    protected $fillable=[
+        'active',
+        'values',
+    ];
     function product(){
         return $this->hasMany(Product::class, 'discount_id', 'id');
     }
