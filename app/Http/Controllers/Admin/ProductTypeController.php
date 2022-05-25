@@ -55,7 +55,7 @@ class ProductTypeController extends Controller
         }
         $product_type->type_name = $request->input('name');
         $product_type->update();
-        return redirect('/dashboard')->with('status',"Update Successfully!");
+        return redirect('/producttype')->with('status',"Update Successfully!");
     }
     public function delete($id)
     {

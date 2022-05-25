@@ -30,11 +30,11 @@
                        <img class="type-image" src="{{asset('images/'.$item->image)}}" alt=""> 
                     </td>
                     <td>{{$item->price}}$</td>
-                    <td>{{$item->discount->values}}</td>
+                    <td>{{$item->discount->values*100}}%</td>
                     <td>{{$item->feature}}</td>
                     <td>
-                        <a href="{{url('edit_product_type/'.$item->id)}}" class="btn btn-primary">Edit</a>
-                        <a href="{{url('delete_product_type/'.$item->id)}}" class="btn btn-danger">Delete</a>
+                        <a href="{{url('edit_products/'.$item->id)}}" class="btn btn-primary">Edit</a>
+                        <a href="{{url('delete_products/'.$item->id)}}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
                 @endforeach

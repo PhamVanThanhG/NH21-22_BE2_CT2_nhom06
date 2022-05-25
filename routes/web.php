@@ -55,6 +55,9 @@ Auth::routes();
     Route::get('products',[ProductsController::class,'index']);
     Route::get('add_products',[ProductsController::class,'add']);
     Route::post('insert_products',[ProductsController::class,'insert']);
+    Route::get('edit_products/{id}',[ProductsController::class,'edit']);
+    Route::put('update_products/{id}',[ProductsController::class,'update']);
+    Route::get('delete_products/{id}',[ProductsController::class,'delete']);
  });
 
 Route::get("/", [ProductController::class, 'index']);
