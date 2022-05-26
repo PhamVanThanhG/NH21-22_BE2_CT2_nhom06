@@ -13,12 +13,13 @@ class ProductController extends Controller
 {
     function index()
     {
-        $getproduct = Product::take(9)->get();
+        
         $product = Product::all();
         $product_type = Product_Type::all();
         $rating = Rating::all();
+        $feature_product = Product::where('feature','1')->inRandomOrder()->take(4)->get();
         $productRelated = Product::where('type_id', $product[0]['type_id'])->inRandomOrder()->take(4)->get();
-        return view("index", ['product' => $product, 'getproduct' => $getproduct, 'product_type' => $product_type, 'rating' => $rating, 'productRelated' => $productRelated]);
+        return view("index",compact('product','product_type','rating','feature_product','productRelated'));
     }
     function product()
     {
