@@ -17,12 +17,11 @@ class CreateCartTable extends Migration
             $table->id();
             $table->BigInteger('product_id');
             $table->BigInteger('user_id');
-            $table->integer('total_price');
             $table->integer('quantity');
             $table->timestamps();
 
 
-            
+
         });
     }
 

@@ -17,7 +17,7 @@ class Product extends Model
         'price',
         'discount_id',
         'feature'
-        
+
     ];
     public $timestamps = false;
     function product_type(){

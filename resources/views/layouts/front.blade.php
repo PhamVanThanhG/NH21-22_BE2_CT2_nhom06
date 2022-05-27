@@ -11,7 +11,7 @@
         @yield('title')
     </title>
 
-    
+
 
     <!-- Fonts -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -34,10 +34,9 @@
     <!-- Scripts -->
     <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
-    
-    
     <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
-    
+    <script src="{{ asset('frontend/js/custom.js') }}"></script>
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @if (session('status'))
     <script>swal("{{session('status')}}");</script>
