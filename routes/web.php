@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Models\Product;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,8 +72,14 @@ Auth::routes();
 
 // Route::get("/", [ProductController::class, 'index']);
 // Route::get("/product", [ProductController::class, 'product']);
+// Route::get("/about", [ProductController::class, 'about']);
+// Route::get("/testimonial", [ProductController::class, 'testimonial']);
 // Route::get("/productByType", [ProductController::class, 'productByType']);
 // Route::get("/detail/{id}", [ProductDetailController::class, 'detail']);
 // Route::get("/cart", [ProductController::class, 'cart']);
 // Route::post("addcart", [CartController::class, 'index']);
 // Route::get("/deletecart/{product_id}", [CartController::class, 'delete']);
+// Route::get("/minus/{product_id}", [CartController::class, 'minus']);
+// Route::get("/plus/{product_id}", [CartController::class, 'plus']);
+// Route::get("/checkout", [CartController::class, 'checkout']);
+// Route::get("/myorders", [OrderController::class, 'index']);

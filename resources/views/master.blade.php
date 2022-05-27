@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Auth;
 ?>
 <!DOCTYPE html>
@@ -25,7 +26,7 @@ use Illuminate\Support\Facades\Auth;
 
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet"> <!-- range slider -->
-  
+
 
   <!-- font awesome style -->
   <!-- <link href="css/font-awesome.min.css" rel="stylesheet" /> -->
@@ -37,30 +38,30 @@ use Illuminate\Support\Facades\Auth;
   <!-- responsive style -->
   <!-- <link href="css/responsive.css" rel="stylesheet" /> -->
   <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-  
+
 
   <!-- detail css -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
-<!-- Bootstrap -->
+  <!-- Bootstrap -->
   {{-- <link type="text/css" rel="stylesheet" href="{{ asset('css/css/bootstrap.min.css') }}" /> --}}
   {{-- <link href="{{ asset('frontend/css/bootstrap5.css') }}" rel="stylesheet"> --}}
 
-<!-- Slick -->
-<link type="text/css" rel="stylesheet" href="{{ asset('css/css/slick.css') }}"/>
-<link type="text/css" rel="stylesheet" href="{{ asset('css/css/slick-theme.css') }}"/>
+  <!-- Slick -->
+  <link type="text/css" rel="stylesheet" href="{{ asset('css/css/slick.css') }}" />
+  <link type="text/css" rel="stylesheet" href="{{ asset('css/css/slick-theme.css') }}" />
 
-<!-- nouislider -->
-<link type="text/css" rel="stylesheet" href="{{ asset('css/css/nouislider.min.css') }}"/>
+  <!-- nouislider -->
+  <link type="text/css" rel="stylesheet" href="{{ asset('css/css/nouislider.min.css') }}" />
 
-<!-- Font Awesome Icon -->
-<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+  <!-- Font Awesome Icon -->
+  <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
 
-<!-- Custom stlylesheet -->
-<link type="text/css" rel="stylesheet" href="{{ asset('css/css/style.css') }}"/>
+  <!-- Custom stlylesheet -->
+  <link type="text/css" rel="stylesheet" href="{{ asset('css/css/style.css') }}" />
 
-<!-- Sweet alert -->
-<!-- <link rel="stylesheet" href="{{ asset('sweetalert2/dist/sweetalert2.css') }}"> -->
+  <!-- Sweet alert -->
+  <!-- <link rel="stylesheet" href="{{ asset('sweetalert2/dist/sweetalert2.css') }}"> -->
 
 </head>
 
@@ -93,47 +94,52 @@ use Illuminate\Support\Facades\Auth;
             </form>
             <div class="user_option_box">
               {{-- <a href="{{ url('/login') }}" class="account-link">
-                <i class="fa fa-user" aria-hidden="true"></i>
-                <span>
-            My Account
-                </span>
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <span>
+                My Account
+              </span>
               </a> --}}
               @guest
-                            @if (Route::has('login'))
-                                <div class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}"><i class="fa-solid fa-right-to-bracket"></i> {{ __('Login') }}</a>
-                                </div>
-                            @endif
+              @if (Route::has('login'))
+              <div class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}"><i class="fa-solid fa-right-to-bracket"></i> {{ __('Login') }}</a>
+              </div>
+              @endif
 
-                            @if (Route::has('register'))
-                                <div class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}"><i class="fa-solid fa-registered"></i> {{ __('Register') }}</a>
-                                </div>
-                            @endif
-                        @else
-                        <div class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              <i class="fa-solid fa-user"></i> {{ Auth::user()->name }}
-                            </a>
-                            <ul class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
-                              <li>
-                                  <a class="dropdown-item" href="#">
-                                    <i class="fa-solid fa-address-card"></i> My Profile
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                      <i class="fa-solid fa-circle-xmark"></i> {{ __('Logout') }}
-                                      </a>
-                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                  </li>
-                             
-                            </ul>
-                        </div>
-                            
-                        @endguest
+              @if (Route::has('register'))
+              <div class="nav-item">
+                <a class="nav-link" href="{{ route('register') }}"><i class="fa-solid fa-registered"></i> {{ __('Register') }}</a>
+              </div>
+              @endif
+              @else
+              <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa-solid fa-user"></i> {{ Auth::user()->name }}
+                </a>
+                <ul class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      <i class="fa-solid fa-address-card"></i> My Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{{ url('/myorders')}}">
+                    <i class="fa-solid fa-bag-shopping"></i> My orders
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                      <i class="fa-solid fa-circle-xmark"></i> {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                    </form>
+                  </li>
+
+                </ul>
+              </div>
+
+              @endguest
               <a href="{{ url('/cart')}}" class="cart-link" id="goToCart">
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 <span>
@@ -314,28 +320,30 @@ use Illuminate\Support\Facades\Auth;
   <script src="{{ asset('js/script.js') }}"></script>
   <!-- detail script -->
   <script src="{{ asset('js/js/jquery.min.js') }}"></script>
-	<script src="{{ asset('js/js/bootstrap.min.js') }}"></script>
-	<script src="{{ asset('js/js/slick.min.js') }}"></script>
-	<script src="{{ asset('js/js/nouislider.min.js') }}"></script>
-	<script src="{{ asset('js/js/jquery.zoom.min.js') }}"></script>
-	<script src="{{ asset('js/js/main.js') }}"></script>
+  <script src="{{ asset('js/js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('js/js/slick.min.js') }}"></script>
+  <script src="{{ asset('js/js/nouislider.min.js') }}"></script>
+  <script src="{{ asset('js/js/jquery.zoom.min.js') }}"></script>
+  <script src="{{ asset('js/js/main.js') }}"></script>
   <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}" defer></script>
   <script src="https://kit.fontawesome.com/fca7e71b15.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   @if (session('status'))
-    <script>swal("{{session('status')}}");</script>
-    @endif
-    <script>
+  <script>
+    swal("{{session('status')}}");
+  </script>
+  @endif
+  <script>
     const goToCart = document.getElementById('goToCart');
     goToCart.addEventListener('click', () => {
       <?php
-        if (!Auth::check()) {
-          ?>
-          swal("YOU HAVE NOT LOGGED IN\nPlease loggin to add product to your shopping cart!")
-          //alert("YOU HAVE NOT LOGGED IN\nPlease loggin to add product to your shopping cart!");
-          event.preventDefault();
-          <?php
-        }
+      if (!Auth::check()) {
+      ?>
+        swal("YOU HAVE NOT LOGGED IN\nPlease loggin to add product to your shopping cart!")
+        //alert("YOU HAVE NOT LOGGED IN\nPlease loggin to add product to your shopping cart!");
+        event.preventDefault();
+      <?php
+      }
       ?>
     })
   </script>
