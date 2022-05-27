@@ -20,9 +20,6 @@ class CreateCartTable extends Migration
             $table->integer('total_price');
             $table->integer('quantity');
             $table->timestamps();
-
-
-            
         });
     }
 

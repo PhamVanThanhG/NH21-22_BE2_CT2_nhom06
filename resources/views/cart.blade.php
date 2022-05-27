@@ -52,7 +52,7 @@ function getWordByAmountWord($str, $amount)
 <body>
     <header id="site-header">
         <div class="container">
-            <h1>Shopping cart</h1>
+            <h1 style="text-align: center; font-weight: bold; text-transform: uppercase;">Shopping cart</h1>
         </div>
     </header>
 
@@ -80,9 +80,9 @@ function getWordByAmountWord($str, $amount)
                     </div>
 
                     <footer class="content">
-                        <span class="qt-minus">-</span>
+                        <a href="{{ url('/minus/'.$productOnCart->product->id)}}" style="color: black;"><span class="qt-minus" id="minus{{ $productOnCart->product->id }}">-</span></a>
                         <span class="qt">{{ $productOnCart['quantity'] }}</span>
-                        <span class="qt-plus">+</span>
+                        <a href="{{ url('/plus/'.$productOnCart->product->id)}}" style="color: black;"><span class="qt-plus" id="plus{{ $productOnCart->product->id }}">+</span></a>
 
                         <h2 class="full-price" style="font-weight: bold">
                             {{ number_format(($productOnCart->product->price * (1 - $productOnCart->product->discount->values)) * $productOnCart['quantity']) }}$
@@ -117,8 +117,8 @@ function getWordByAmountWord($str, $amount)
             </div>
 
             <div class="right">
-                <h1 class="total">Total: <span>177.16</span>$</h1>
-                <a class="btn">Checkout</a>
+                <h1 class="total" style="font-weight: bold;">Total: <span>{{ number_format($totalPrice + 5) }}</span>$</h1>
+                <a class="btn" id="btncheckout" style="font-weight: bold;" href="{{ url('checkout') }}">Checkout</a>
             </div>
 
         </div>
@@ -247,6 +247,26 @@ function getWordByAmountWord($str, $amount)
         <?php
         }
         ?>
+        <?php
+            for ($i=0; $i < count($cart); $i++) { 
+                $productOnCart = $cart[$i];
+            }
+        ?>
+        const btncheckout = document.getElementById('btncheckout');
+        btncheckout.addEventListener('click', () => {
+            <?php
+            if (count($cart) == 0) {
+                ?>
+                swal("CHECKOUT", "You have no product on your cart to checkout!");
+                event.preventDefault();
+                <?php
+            }else{
+                ?>
+                swal("CHECKOUT", "You placed order successfully!");
+                <?php
+            }
+            ?>
+        })
     </script>
 </body>
 

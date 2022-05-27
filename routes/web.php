@@ -68,3 +68,6 @@ Route::get("/detail/{id}", [ProductDetailController::class, 'detail']);
 Route::get("/cart", [ProductController::class, 'cart']);
 Route::post("addcart", [CartController::class, 'index']);
 Route::get("/deletecart/{product_id}", [CartController::class, 'delete']);
+Route::get("/minus/{product_id}", [CartController::class, 'minus']);
+Route::get("/plus/{product_id}", [CartController::class, 'plus']);
+Route::get("/checkout", [CartController::class, 'checkout']);
