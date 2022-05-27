@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductDetailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Models\Product;
+use App\Http\Controllers\Frontend\FrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +36,7 @@ use App\Models\Product;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/login', function () {
-    return view('auth.login');
-});
+// Route::get('/',[FrontendController::class,'index']);
 
 Auth::routes();
 
