@@ -43,7 +43,7 @@ use Illuminate\Support\Facades\Auth;
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
 <!-- Bootstrap -->
-  <!-- <link type="text/css" rel="stylesheet" href="{{ asset('css/css/bootstrap.min.css') }}" /> -->
+  {{-- <link type="text/css" rel="stylesheet" href="{{ asset('css/css/bootstrap.min.css') }}" /> --}}
   {{-- <link href="{{ asset('frontend/css/bootstrap5.css') }}" rel="stylesheet"> --}}
 
 <!-- Slick -->

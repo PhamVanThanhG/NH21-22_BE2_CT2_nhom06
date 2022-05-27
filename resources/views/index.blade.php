@@ -58,12 +58,12 @@ $index = $sizeLists / 6 + 1;
           <div class="row">
             <div class="col-md-12">
               <div class="section-title text-center">
-                <h3 class="title">Related Products</h3>
+                <h3 class="title">Featured Products</h3>
               </div>
             </div>
             <?php
-            for ($i = 0; $i < count($productRelated); $i++) {
-              $value = $productRelated[$i];
+            for ($i = 0; $i < count($feature_product); $i++) {
+              $value = $feature_product[$i];
             ?>
               <!-- product -->
               <div class="col-md-3 col-xs-6">
@@ -162,7 +162,6 @@ $index = $sizeLists / 6 + 1;
 
 
 <!-- product section -->
-
 <section class="product_section layout_padding">
   <div class="container">
     <div class="heading_container heading_center">
