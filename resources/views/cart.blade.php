@@ -1,4 +1,10 @@
+@extends('master')
+@section('content')
 <?php
+
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
+
 function getWordByAmountWord($str, $amount)
 {
     $dem = 0;
@@ -25,7 +31,7 @@ function getWordByAmountWord($str, $amount)
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Shopping cart</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800">
     <link rel="stylesheet" href="{{ asset('css/cartstyle.css') }}">
     <style>
@@ -46,7 +52,7 @@ function getWordByAmountWord($str, $amount)
 <body>
     <header id="site-header">
         <div class="container">
-            <h1>Shopping cart <span>[</span> <em><a href="https://codepen.io/tag/rodeo-007" target="_blank">CodePen Challange</a></em> <span class="last-span is-open">]</span></h1>
+            <h1>Shopping cart</h1>
         </div>
     </header>
 
@@ -61,7 +67,7 @@ function getWordByAmountWord($str, $amount)
             ?>
                 <article class="product">
                     <header>
-                        <a class="remove<?php echo($productOnCart->product->id) ?>">
+                        <a class="remove<?php echo ($productOnCart->product->id) ?>" class="remove<?php echo ($productOnCart->product->id) ?>">
                             <img src="{{ asset('images/'.$productOnCart->product->image) }}" alt="">
 
                             <h3>Remove product</h3>
@@ -69,7 +75,7 @@ function getWordByAmountWord($str, $amount)
                     </header>
 
                     <div class="content">
-                        <h1>{{ $productOnCart->product->name }}</h1>
+                        <h1 style="font-weight: bold">{{ $productOnCart->product->name }}</h1>
                         {{ getWordByAmountWord($productOnCart->product->description, 40).'...' }}
                     </div>
 
@@ -78,10 +84,10 @@ function getWordByAmountWord($str, $amount)
                         <span class="qt">{{ $productOnCart['quantity'] }}</span>
                         <span class="qt-plus">+</span>
 
-                        <h2 class="full-price">
-                        {{ number_format(($productOnCart->product->price * (1 - $productOnCart->product->discount->values)) * $productOnCart['quantity']) }}$
+                        <h2 class="full-price" style="font-weight: bold">
+                            {{ number_format(($productOnCart->product->price * (1 - $productOnCart->product->discount->values)) * $productOnCart['quantity']) }}$
                         </h2>
-                        <h2 class="price">
+                        <h2 class="price" style="font-weight: bold">
                             {{ number_format(($productOnCart->product->price * (1 - $productOnCart->product->discount->values)), 0, '', '') }}$
                         </h2>
                         <?php
@@ -126,7 +132,7 @@ function getWordByAmountWord($str, $amount)
             var price = parseFloat(el.parent().children(".price").html());
             var eq = price * qt;
 
-            el.parent().children(".full-price").html(eq.toLocaleString('en-US') +"$");
+            el.parent().children(".full-price").html(eq.toLocaleString('en-US') + "$");
 
             changeTotal();
         }
@@ -137,7 +143,7 @@ function getWordByAmountWord($str, $amount)
 
             $(".full-price").each(function(index) {
                 // price += parseFloat($(".full-price").eq(index).html());
-                var string = $(".full-price").eq(index).html().replace(/,/g , '' );
+                var string = $(".full-price").eq(index).html().replace(/,/g, '');
                 price += parseFloat(string);
             });
 
@@ -215,10 +221,10 @@ function getWordByAmountWord($str, $amount)
             });
         });
         <?php
-        for ($i=0; $i < count($cart); $i++) { 
+        for ($i = 0; $i < count($cart); $i++) {
             $productOnCart = $cart[$i];
-            ?>
-            $(".remove<?php echo($productOnCart->product->id) ?>").click(function() {
+        ?>
+            $(".remove<?php echo ($productOnCart->product->id) ?>").click(function() {
                 //Delete on UI
                 var el = $(this);
                 el.parent().parent().addClass("removed");
@@ -236,12 +242,13 @@ function getWordByAmountWord($str, $amount)
                             changeTotal();
                         });
                     }, 200);
-                //Delete on database
+                window.location = "{{ url('/deletecart/'.$productOnCart->product->id)}}";
             });
-            <?php
+        <?php
         }
         ?>
     </script>
 </body>
 
 </html>
+@endsection

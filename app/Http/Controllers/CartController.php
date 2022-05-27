@@ -1,0 +1,60 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Cart;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\Console\Input\Input;
+
+class CartController extends Controller
+{
+    function index(Request $request)
+    {
+        $qty = (int)$request->input('num_product');
+        $productID = (int)$request->input('product_id');
+
+        $cart = Cart::where('user_id', Auth::user()->id)->get();
+
+        //Check whether that cart have product id
+        $isExist = false;
+        $cartID = 0;
+        for ($i = 0; $i < count($cart); $i++) {
+            if ($cart[$i]->product_id == $productID) {
+                $isExist = true;
+                $cartID = $cart[$i]->id;
+                break;
+            }
+        }
+        if ($isExist) {
+            //Update quantity
+            //Cart::where('product_id', $productID)->where('user_id', Auth::user()->id)->update(array('quantity' => $qty));
+            // $cartUpdate = Cart::where('user_id', Auth::user()->id);
+            // $cartToUpdate = $cartUpdate->where('product_id', $productID);
+            // $cartToUpdate->quantity = $qty;
+            // $cartToUpdate->save();
+
+            Cart::find($cartID)->update(['quantity' => $qty]);
+            echo ("Exist");
+        } else {
+            //Insert new cart with the product_id
+            DB::table('cart')->insert([
+                [
+                    'product_id' => $productID,
+                    'user_id' => Auth::user()->id,
+                    'total_price' => 0,
+                    'quantity' => $qty,
+                ]
+            ]);
+        }
+
+        return redirect()->back();
+    }
+
+    function delete($product_id = '')
+    {
+        Cart::where('product_id', (int)$product_id)->where('user_id', Auth::user()->id)->delete();
+        return redirect()->back();
+    }
+}

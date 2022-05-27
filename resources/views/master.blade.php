@@ -1,3 +1,6 @@
+<?php
+use Illuminate\Support\Facades\Auth;
+?>
 <!DOCTYPE html>
 <html>
 
@@ -55,6 +58,10 @@
 
 <!-- Custom stlylesheet -->
 <link type="text/css" rel="stylesheet" href="{{ asset('css/css/style.css') }}"/>
+
+<!-- Sweet alert -->
+<!-- <link rel="stylesheet" href="{{ asset('sweetalert2/dist/sweetalert2.css') }}"> -->
+
 </head>
 
 <body class="sub_page">
@@ -127,7 +134,7 @@
                         </div>
                             
                         @endguest
-              <a href="{{ url('/cart')}}" class="cart-link">
+              <a href="{{ url('/cart')}}" class="cart-link" id="goToCart">
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 <span>
                   Cart
@@ -295,6 +302,9 @@
   </footer>
   <!-- footer section -->
 
+
+  <!-- Sweet alert
+  <script src="node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script> -->
   <!-- jQery -->
   <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
   <!-- bootstrap js -->
@@ -315,8 +325,20 @@
   @if (session('status'))
     <script>swal("{{session('status')}}");</script>
     @endif
-
-
+    <script>
+    const goToCart = document.getElementById('goToCart');
+    goToCart.addEventListener('click', () => {
+      <?php
+        if (!Auth::check()) {
+          ?>
+          swal("YOU HAVE NOT LOGGED IN\nPlease loggin to add product to your shopping cart!")
+          //alert("YOU HAVE NOT LOGGED IN\nPlease loggin to add product to your shopping cart!");
+          event.preventDefault();
+          <?php
+        }
+      ?>
+    })
+  </script>
 </body>
 
 </html>
