@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductDetailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Models\Product;
+use App\Http\Controllers\Frontend\FrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +35,7 @@ use App\Models\Product;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/login', function () {
-    return view('auth.login');
-});
+Route::get('/',[FrontendController::class,'index']);
 
 Auth::routes();
 
@@ -60,8 +59,8 @@ Auth::routes();
     Route::get('delete_products/{id}',[ProductsController::class,'delete']);
  });
 
-Route::get("/", [ProductController::class, 'index']);
-Route::get("/product", [ProductController::class, 'product']);
-Route::get("/productByType", [ProductController::class, 'productByType']);
-Route::get("/detail/{id}", [ProductDetailController::class, 'detail']);
-Route::get("/cart", [ProductController::class, 'cart']);
+// Route::get("/", [ProductController::class, 'index']);
+// Route::get("/product", [ProductController::class, 'product']);
+// Route::get("/productByType", [ProductController::class, 'productByType']);
+// Route::get("/detail/{id}", [ProductDetailController::class, 'detail']);
+// Route::get("/cart", [ProductController::class, 'cart']);
