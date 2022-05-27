@@ -18,4 +18,7 @@ class Order extends Model
         'created_at',
         'updated_at'
     ];
+    function state(){
+        return $this->belongsTo(State::class, 'state_id');
+    }
 }

@@ -32,6 +32,14 @@ class ProductController extends Controller
         $rating = Rating::all();
         return view("product", ['product' => $product, 'product_type' => $product_type, 'rating' => $rating]);
     }
+
+    function testimonial(){
+        return view("testimonial");
+    }
+
+    function about(){
+        return view("about");
+    }
     function productByType(Request $request)
     {
         $typeid = (int)$request->input('typeid');
