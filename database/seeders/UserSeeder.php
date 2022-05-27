@@ -31,6 +31,12 @@ class UserSeeder extends Seeder
                 'role_as'=> 0,
 
             ],
+            [
+                'name' => "Pham Van Thanh",
+                'email'=> "robertthanh1107@gmail.com",
+                'password'=>Hash::make("12345678"),
+                'role_as'=> 0,
+            ],
         ]);
     }
 }

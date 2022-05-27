@@ -1,6 +1,9 @@
 @extends('master')
 @section('content')
 <?php
+
+use Illuminate\Support\Facades\Auth;
+
 function getRatingByProductId($array, $productid)
 {
     $result = array();
@@ -151,17 +154,19 @@ function getArrayRatingValue($array)
                     <div class="product-options">
 
                     </div>
-                    <form method="post" action="add_cart.php?id_product=1&amp;key=2">
+                    <form method="post" action="{{ url('/addcart') }}">
+                        @csrf <!-- {{ csrf_field() }} -->
                         <div class="add-to-cart">
                             <div class="qty-label">
                                 Qty
                                 <div class="input-number">
-                                    <input type="number" name="quantity" value="1">
-                                    <span class="qty-up">+</span>
-                                    <span class="qty-down">-</span>
+                                    <input type="number" name="num_product" value="1" id="qty_value">
+                                    <span id="qty-up" class="qty-up">+</span>
+                                    <span id="qty-down" class="qty-down">-</span>
                                 </div>
                             </div>
-                            <button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <button type="submit" id="addtocart" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
                                 cart</button>
                         </div>
                     </form>
@@ -566,4 +571,34 @@ function getArrayRatingValue($array)
     </div>
     <!-- /container -->
 </div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    const qty_value = document.getElementById('qty_value');
+    const qtyup = document.getElementById('qty-up');
+    const qtydown = document.getElementById('qty-down');
+    qtyup.addEventListener('click', () => {
+        qty_value.value = parseInt(qty_value.value) + 1;
+    })
+    qtydown.addEventListener('click', () => {
+        const qtyValue = parseInt(qty_value.value);
+        if (qtyValue != 1) {
+            qty_value.value = qtyValue - 1;
+        }
+    })
+    const addtocart = document.getElementById('addtocart');
+    addtocart.addEventListener('click', () => {
+        <?php
+        if (!Auth::check()) {
+            ?>
+            swal("YOU HAVE NOT LOGGED IN\nPlease loggin to add product to your shopping cart!");
+            event.preventDefault();
+            <?php
+        }else{
+            ?>
+            swal("CART", "Added that product to your shopping cart successfully!");
+            <?php
+        }
+        ?>
+    })
+</script>
 @endsection

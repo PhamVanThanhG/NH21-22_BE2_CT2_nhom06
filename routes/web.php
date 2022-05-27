@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\ProductTypeController;
 use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductDetailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -35,7 +36,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/',[FrontendController::class,'index']);
+// Route::get('/',[FrontendController::class,'index']);
 
 Auth::routes();
 
@@ -59,8 +60,10 @@ Auth::routes();
     Route::get('delete_products/{id}',[ProductsController::class,'delete']);
  });
 
-// Route::get("/", [ProductController::class, 'index']);
-// Route::get("/product", [ProductController::class, 'product']);
-// Route::get("/productByType", [ProductController::class, 'productByType']);
-// Route::get("/detail/{id}", [ProductDetailController::class, 'detail']);
-// Route::get("/cart", [ProductController::class, 'cart']);
+Route::get("/", [ProductController::class, 'index']);
+Route::get("/product", [ProductController::class, 'product']);
+Route::get("/productByType", [ProductController::class, 'productByType']);
+Route::get("/detail/{id}", [ProductDetailController::class, 'detail']);
+Route::get("/cart", [ProductController::class, 'cart']);
+Route::post("addcart", [CartController::class, 'index']);
+Route::get("/deletecart/{product_id}", [CartController::class, 'delete']);

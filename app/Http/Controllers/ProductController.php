@@ -7,10 +7,14 @@ use App\Models\Product;
 use App\Models\Product_Type;
 use App\Models\Rating;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Ramsey\Uuid\Type\Integer;
+
 
 class ProductController extends Controller
 {
+    
     function index()
     {
         
@@ -39,7 +43,8 @@ class ProductController extends Controller
 
     function cart()
     {
-        $cart = Cart::where('user_id', 1)->get();
-        return view("cart", ['cart' => $cart]);
+        $cartTo = Session::get('cart');
+        $cart = Cart::where('user_id', Auth::user()->id)->get();
+        return view("cart", ['cart' => $cart, 'cartTo' => $cartTo]);
     }
 }
