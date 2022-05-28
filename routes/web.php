@@ -4,6 +4,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\ProductTypeController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\Frontend\FrontendCartController;
 use App\Http\Controllers\ProductDetailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -37,8 +38,16 @@ use App\Http\Controllers\OrderController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-// Route::get('/',[FrontendController::class,'index']);
+Route::get('/',[FrontendController::class,'index']);
+Route::get('/category',[FrontendController::class,'category']);
+Route::get('/category-view/{id}',[FrontendController::class,'categoryview']);
+Route::get('/category-view/{type_name}/{id}',[FrontendController::class,'productview']);
 
+Route::post('/add-to-cart',[FrontendCartController::class,'addProduct']);
+Route::post('/delete-cart-item',[FrontendCartController::class,'deleteProduct']);
+Route::middleware(['auth'])->group(function () {
+Route::get('cart',[FrontendCartController::class,'viewcart']);
+});
 Auth::routes();
 
 

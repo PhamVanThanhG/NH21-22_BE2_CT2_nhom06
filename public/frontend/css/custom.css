@@ -1,3 +1,6 @@
 .card img{
     height: 250px;;
 }
+.img-fluid{
+    height: 100px !important;
+}

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Input\Input;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CartController extends Controller
 {
