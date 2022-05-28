@@ -176,14 +176,26 @@
             for ($i = 0; $i < count($order); $i++) {
                 $getOrder = $order[$i];
                 $products = array();
-                for ($j=0; $j < count($orderedProduct); $j++) { 
+                for ($j = 0; $j < count($orderedProduct); $j++) {
                     if ($orderedProduct[$j]->order_id == $getOrder->order_id) {
                         array_push($products, $orderedProduct[$j]);
                     }
                 }
             ?>
                 <div class="card-body" style="background-color: white;margin-bottom: 20px;">
-                    <h5 style="font-weight: bold;">Order ID: {{ $getOrder->order_id }}</h5>
+                    <div class="row" style="margin-bottom: 15px;">
+                        <div class="col-10">
+                            <h5 style="font-weight: bold;">Order ID: {{ $getOrder->order_id }}</h5>
+                        </div>
+                        <div class="col"> <?php
+                                            if ($getOrder->state_id == 1) {
+                                            ?>
+                                <a href="{{ url('/cancelorder/'.$getOrder->order_id)}}"><button class="btn btn-warning" style="align-content: center;">Cancel</button></a>
+                            <?php
+                                            }
+                            ?>
+                        </div>
+                    </div>
                     <div class="row" style="margin-bottom: 10px;">
                         <div class="col-8">Receiver's name: {{ $getOrder->fullname }} <br>Receiver's address: {{ $getOrder->address }}</div>
                         <div class="col">Receiver's phone number: {{ $getOrder->phonenumber }}</div>
@@ -240,13 +252,6 @@
                         </div>
                     </div>
                     <hr>
-                    <?php
-                    if ($getOrder->state_id == 1) {
-                    ?>
-                        <a href="{{ url('/cancelorder/'.$getOrder->order_id)}}"><button class="btn btn-warning" style="align-content: center;">Cancel</button></a>
-                    <?php
-                    }
-                    ?>
                 </div>
             <?php
             }

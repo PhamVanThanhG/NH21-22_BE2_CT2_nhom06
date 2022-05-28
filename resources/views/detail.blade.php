@@ -2,6 +2,7 @@
 @section('content')
 <?php
 
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 
 function getRatingByProductId($array, $productid)
@@ -155,7 +156,8 @@ function getArrayRatingValue($array)
 
                     </div>
                     <form method="post" action="{{ url('/addcart') }}">
-                        @csrf <!-- {{ csrf_field() }} -->
+                        @csrf
+                        <!-- {{ csrf_field() }} -->
                         <div class="add-to-cart">
                             <div class="qty-label">
                                 Qty
@@ -469,12 +471,13 @@ function getArrayRatingValue($array)
                                 <!-- Review Form -->
                                 <div class="col-md-3">
                                     <div id="review-form">
-                                        <form id="add-review" class="review-form" method="post" action="add_review.php?id_product=1">
-                                            <textarea class="input" name="comment" placeholder="Your Review"></textarea>
+                                        <form id="add-review" class="review-form" method="post" action="{{ url('/addreview')}}">
+                                            @csrf
+                                            <textarea class="input" name="comment" placeholder="Your Review" required></textarea>
                                             <div class="input-rating">
                                                 <span>Your Rating: </span>
                                                 <div class="stars">
-                                                    <input id="star5" name="rating" value="5" type="radio"><label for="star5"></label><input id="star4" name="rating" value="4" type="radio"><label for="star4"></label><input id="star3" name="rating" value="3" type="radio"><label for="star3"></label><input id="star2" name="rating" value="2" type="radio"><label for="star2"></label><input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
+                                                    <input id="star5" name="rating" value="5" type="radio" checked><label for="star5"></label><input id="star4" name="rating" value="4" type="radio"><label for="star4"></label><input id="star3" name="rating" value="3" type="radio"><label for="star3"></label><input id="star2" name="rating" value="2" type="radio"><label for="star2"></label><input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
                                                     <!-- <input id="star5" name="rating" value="5" type="radio" checked><label for="star5"></label>
 																<input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
 																<input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
@@ -482,7 +485,8 @@ function getArrayRatingValue($array)
 																<input id="star1" name="rating" value="1" type="radio"><label for="star1"></label> -->
                                                 </div>
                                             </div>
-                                            <button type="submit" class="primary-btn">Submit</button>
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <button type="submit" class="primary-btn" id="submitreview">Submit</button>
                                         </form>
                                     </div>
                                 </div>
@@ -589,14 +593,39 @@ function getArrayRatingValue($array)
     addtocart.addEventListener('click', () => {
         <?php
         if (!Auth::check()) {
-            ?>
+        ?>
             swal("YOU HAVE NOT LOGGED IN\nPlease loggin to add product to your shopping cart!");
             event.preventDefault();
-            <?php
-        }else{
-            ?>
+        <?php
+        } else {
+        ?>
             swal("CART", "Added that product to your shopping cart successfully!");
-            <?php
+        <?php
+        }
+        ?>
+    })
+    const submitreview = document.getElementById("submitreview");
+    submitreview.addEventListener('click', () => {
+        <?php
+        $check = false;
+        for ($j = 0; $j < count($deliveredOrders); $j++) {
+            if ($deliveredOrders[$j]->state_id == 3) {
+                for ($i = 0; $i < count($orderedProduct); $i++) {
+                    if ($orderedProduct[$i]->order_id == $deliveredOrders[$j]->order_id) {
+                        if ($orderedProduct[$i]->product_id == $product->id) {
+                            $check = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        if ($check) {
+        } else {
+        ?>
+            swal("REVIEW", "You must place and receive that product before reviewing!");
+            event.preventDefault();
+        <?php
         }
         ?>
     })

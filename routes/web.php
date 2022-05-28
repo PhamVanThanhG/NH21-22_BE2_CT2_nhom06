@@ -84,3 +84,4 @@ Route::get("/plus/{product_id}", [CartController::class, 'plus']);
 Route::post("/checkout", [CartController::class, 'checkout']);
 Route::get("/myorders", [OrderController::class, 'index']);
 Route::get("/cancelorder/{order_id}", [OrderController::class, 'cancel']);
+Route::post("/addreview", [OrderController::class, 'addreview']);
