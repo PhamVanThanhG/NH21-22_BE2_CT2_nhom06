@@ -16,7 +16,10 @@ class Order extends Model
         'temporary_price',
         'total_price',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'fullname',
+        'phonenumber',
+        'address'
     ];
     function state(){
         return $this->belongsTo(State::class, 'state_id');

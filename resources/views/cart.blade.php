@@ -46,10 +46,119 @@ function getWordByAmountWord($str, $amount)
             padding: 0 30px;
             text-decoration: line-through;
         }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        label {
+            padding: 12px 12px 12px 0;
+            display: inline-block;
+        }
+
+        input[type=submit] {
+            background-color: #58257b;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        .col-25 {
+            float: left;
+            width: 30%;
+            margin-top: 6px;
+        }
+
+        .col-75 {
+            float: left;
+            width: 60%;
+            margin-top: 6px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Bố cục linh hoạt: khi màn hình có chiều rộng dưới 600px thì hai cột chồng 
+lên nhau thay vì nằm cạnh nhau */
+        @media screen and (max-width: 600px) {
+
+            .col-25,
+            .col-75,
+            input[type=submit] {
+                width: 100%;
+                margin-top: 0;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="width: 600px;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Receiver's information</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="padding-left: 50px; padding-right: 50px;">
+                    <form method="post" action="{{ url('/checkout') }}">
+                        @csrf
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="fullname">Fullname</label>
+                            </div>
+                            <div class="col-75">
+                                <input type="text" id="fullname" name="fullname" placeholder="Receiver's fullname">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="phonenumber">Phone number</label>
+                            </div>
+                            <div class="col-75">
+                                <input type="text" id="phonenumber" name="phonenumber" placeholder="Receiver's phone number">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="subject">Address</label>
+                            </div>
+                            <div class="col-75">
+                                <textarea id="address" name="address" placeholder="Receiver's address" style="height:120px"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" value="Xác nhận">
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <header id="site-header">
         <div class="container">
             <h1 style="text-align: center; font-weight: bold; text-transform: uppercase;">Shopping cart</h1>
@@ -118,7 +227,7 @@ function getWordByAmountWord($str, $amount)
 
             <div class="right">
                 <h1 class="total" style="font-weight: bold;">Total: <span>{{ number_format($totalPrice + 5) }}</span>$</h1>
-                <a class="btn" id="btncheckout" style="font-weight: bold;" href="{{ url('checkout') }}">Checkout</a>
+                <a class="btn" style="font-weight: bold;" data-toggle="modal" data-target="#exampleModal">Checkout</a>
             </div>
 
         </div>
@@ -248,22 +357,22 @@ function getWordByAmountWord($str, $amount)
         }
         ?>
         <?php
-            for ($i=0; $i < count($cart); $i++) { 
-                $productOnCart = $cart[$i];
-            }
+        for ($i = 0; $i < count($cart); $i++) {
+            $productOnCart = $cart[$i];
+        }
         ?>
         const btncheckout = document.getElementById('btncheckout');
         btncheckout.addEventListener('click', () => {
             <?php
             if (count($cart) == 0) {
-                ?>
+            ?>
                 swal("CHECKOUT", "You have no product on your cart to checkout!");
                 event.preventDefault();
-                <?php
-            }else{
-                ?>
+            <?php
+            } else {
+            ?>
                 swal("CHECKOUT", "You placed order successfully!");
-                <?php
+            <?php
             }
             ?>
         })

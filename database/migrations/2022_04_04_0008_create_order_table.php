@@ -19,6 +19,10 @@ class CreateOrderTable extends Migration
             $table->integer('state_id');
             $table->double('temporary_price', 8, 1);
             $table->double('total_price', 8, 1);
+            $table->BigInteger('user_id');
+            $table->string('fullname');
+            $table->string('phonenumber');
+            $table->string('address');
             $table->timestamps();
         });
     }

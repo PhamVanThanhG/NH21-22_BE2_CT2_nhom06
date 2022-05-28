@@ -72,5 +72,6 @@ Route::post("addcart", [CartController::class, 'index']);
 Route::get("/deletecart/{product_id}", [CartController::class, 'delete']);
 Route::get("/minus/{product_id}", [CartController::class, 'minus']);
 Route::get("/plus/{product_id}", [CartController::class, 'plus']);
-Route::get("/checkout", [CartController::class, 'checkout']);
+Route::post("/checkout", [CartController::class, 'checkout']);
 Route::get("/myorders", [OrderController::class, 'index']);
+Route::get("/cancelorder/{order_id}", [OrderController::class, 'cancel']);

@@ -170,54 +170,87 @@
 
 <body>
     <div class="container">
-        <article class="card">
-            <header class="card-header"> My Orders / Tracking </header>
-            <div class="card-body">
-                <h6>Order ID: OD45345345435</h6>
-                <article class="card">
-                    <div class="card-body row">
-                        <div class="col"> <strong>Estimated Delivery time:</strong> <br>29 nov 2019 </div>
-                        <div class="col"> <strong>Shipping BY:</strong> <br> BLUEDART, | <i class="fa fa-phone"></i> +1598675986 </div>
-                        <div class="col"> <strong>Status:</strong> <br> Picked by the courier </div>
-                        <div class="col"> <strong>Tracking #:</strong> <br> BD045903594059 </div>
+        <article class="card" style="background-color: red;">
+            <header class="card-header"> My Orders</header>
+            <?php
+            for ($i = 0; $i < count($order); $i++) {
+                $getOrder = $order[$i];
+                $products = array();
+                for ($j=0; $j < count($orderedProduct); $j++) { 
+                    if ($orderedProduct[$j]->order_id == $getOrder->order_id) {
+                        array_push($products, $orderedProduct[$j]);
+                    }
+                }
+            ?>
+                <div class="card-body" style="background-color: white;margin-bottom: 20px;">
+                    <h5 style="font-weight: bold;">Order ID: {{ $getOrder->order_id }}</h5>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-8">Receiver's name: {{ $getOrder->fullname }} <br>Receiver's address: {{ $getOrder->address }}</div>
+                        <div class="col">Receiver's phone number: {{ $getOrder->phonenumber }}</div>
                     </div>
-                </article>
-                <div class="track">
-                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order confirmed</span> </div>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Picked by courier</span> </div>
-                    <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
-                    <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Ready for pickup</span> </div>
+                    <article class="card">
+                        <div class="card-body row">
+                            <div class="col"> <strong>Created at:</strong> <br> {{ $getOrder->created_at }} </div>
+                            <div class="col"> <strong>State:</strong> <br> {{ $getOrder->state->state_name }} </div>
+                            <div class="col"> <strong>Last state change at :</strong> <br> {{ $getOrder->updated_at }} </div>
+                        </div>
+                    </article>
+                    <?php
+                    if ($getOrder->state_id != 4) {
+                    ?>
+                        <div class="track">
+                            <div class="step <?php if ($getOrder->state_id != 1) {
+                                                    echo ("active");
+                                                } ?>
+                                                "> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order confirmed</span> </div>
+                            <div class="step <?php if ($getOrder->state_id != 1) {
+                                                    echo ("active");
+                                                } ?>"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
+                            <div class="step <?php if ($getOrder->state_id == 3) {
+                                                    echo ("active");
+                                                } ?>"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Delivered</span> </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                    <hr>
+                    <ul class="row">
+                        <?php
+                        for ($j = 0; $j < count($products); $j++) {
+                        ?>
+                            <li class="col-md-4">
+                                <figure class="itemside mb-3">
+                                    <div class="aside"><img src="{{ asset('images/'.$products[$j]->product->image) }}" class="img-sm border"></div>
+                                    <figcaption class="info align-self-center">
+                                        <p class="title"><span style="font-weight: bold;">{{ $products[$j]->product->name }}</span> <br> <span style="text-decoration: line-through;">${{ number_format($products[$j]->pricewithoutdiscount) }}</span></p> <span style="font-weight: bold;">${{ number_format($products[$j]->pricewithdiscount) }}</span>
+                                    </figcaption>
+                                </figure>
+                            </li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
+                    <div class="row">
+                        <div class="col-8">
+                            <h5>Total price without discount: ${{ number_format($getOrder->temporary_price) }}</h5>
+                            <h5>Transfer fee: $5</h5>
+                        </div>
+                        <div class="col">
+                            <h5 style="font-weight: bold;">Total price: ${{ number_format($getOrder->total_price) }}</h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <?php
+                    if ($getOrder->state_id == 1) {
+                    ?>
+                        <a href="{{ url('/cancelorder/'.$getOrder->order_id)}}"><button class="btn btn-warning" style="align-content: center;">Cancel</button></a>
+                    <?php
+                    }
+                    ?>
                 </div>
-                <hr>
-                <ul class="row">
-                    <li class="col-md-4">
-                        <figure class="itemside mb-3">
-                            <div class="aside"><img src="https://i.imgur.com/iDwDQ4o.png" class="img-sm border"></div>
-                            <figcaption class="info align-self-center">
-                                <p class="title">Dell Laptop with 500GB HDD <br> 8GB RAM</p> <span class="text-muted">$950 </span>
-                            </figcaption>
-                        </figure>
-                    </li>
-                    <li class="col-md-4">
-                        <figure class="itemside mb-3">
-                            <div class="aside"><img src="https://i.imgur.com/tVBy5Q0.png" class="img-sm border"></div>
-                            <figcaption class="info align-self-center">
-                                <p class="title">HP Laptop with 500GB HDD <br> 8GB RAM</p> <span class="text-muted">$850 </span>
-                            </figcaption>
-                        </figure>
-                    </li>
-                    <li class="col-md-4">
-                        <figure class="itemside mb-3">
-                            <div class="aside"><img src="https://i.imgur.com/Bd56jKH.png" class="img-sm border"></div>
-                            <figcaption class="info align-self-center">
-                                <p class="title">ACER Laptop with 500GB HDD <br> 8GB RAM</p> <span class="text-muted">$650 </span>
-                            </figcaption>
-                        </figure>
-                    </li>
-                </ul>
-                <hr>
-                <a href="#" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to orders</a>
-            </div>
+            <?php
+            }
+            ?>
         </article>
     </div>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>

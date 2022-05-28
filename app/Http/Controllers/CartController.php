@@ -76,8 +76,11 @@ class CartController extends Controller
         return redirect()->back();
     }
 
-    function checkout()
+    function checkout(Request $request)
     {
+        $fullname = $request->input('fullname');
+        $phonenumber = $request->input('phonenumber');
+        $address = $request->input('address');
         $cart = Cart::where('user_id', Auth::user()->id)->get();
         $date = "OD" . date("mdYHi");
         //Calculator temporary price, total price
@@ -95,6 +98,10 @@ class CartController extends Controller
                 'state_id' => 1,
                 'temporary_price' => $temporyprice,
                 'total_price' => $totalprice + 5,
+                'user_id' => Auth::user()->id,
+                'fullname' => $fullname,
+                'phonenumber' => $phonenumber,
+                'address' => $address,
             ]
         ]);
         //Add to orderedProduct
