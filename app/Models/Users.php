@@ -13,4 +13,7 @@ class Users extends Model
     function rating(){
         return $this->hasMany(Rating::class, 'user_id', 'id');
     }
+    function order(){
+        return $this->hasMany(Order::class, 'user_id', 'id');
+    }
 }

@@ -13,14 +13,10 @@
                     <div class="row">
                         <div class="col-md-6 order-detail">
                             <h4>Shipping Details</h4>
-                            <label for="">First Name</label>
-                            <div class="border pt-2">{{$order->fname}}</div>
-                            <label for="">Last Name</label>
-                            <div class="border pt-2">{{$order->lname}}</div>
-                            <label for="">Email</label>
-                            <div class="border pt-2">{{$order->email}}</div>
+                            <label for="">Full Name</label>
+                            <div class="border pt-2">{{$order->fullname}}</div>
                             <label for="">Phone Number</label>
-                            <div class="border pt-2">{{$order->phone}}</div>
+                            <div class="border pt-2">{{$order->phonenumber}}</div>
                             <label for="">Address</label>
                             <div class="border pt-2">{{$order->address}}</div>
                         </div>
@@ -32,16 +28,18 @@
                                         <th>Name</th>
                                         <th>Quantity</th>
                                         <th>Price</th>
+                                        <th>Discounted Price</th>
                                         <th>Image</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($order->order_items as $item)
+                                    @foreach ($order->order_product as $item)
                                     <tr>
                                         <td>{{$item->product->name}}</td>
                                         <td>{{$item->quantity}}</td>
-                                        <td>{{$item->price}}</td>
+                                        <td>{{$item->pricewithoutdiscount}}</td>
+                                        <td>{{$item->pricewithdiscount}}</td>
                                         <td><img id="cart-img" src="{{ asset('images/'.$item->product->image) }}" width="75" alt=""></td>
                                     </tr>
                                     @endforeach
@@ -54,8 +52,10 @@
                                     @csrf
                                     @method('PUT')
                                 <select class="form-select p-1" name="order_status">
-                                    <option {{$order->status== '0'?'selected':''}} value="0">Confirmed</option>
-                                    <option {{$order->status== '1'?'selected':''}} value="1">Completed</option>
+                                    <option {{$order->state_id== '1'?'selected':''}} value="1">To Confirm</option>
+                                    <option {{$order->state_id== '2'?'selected':''}} value="2">To Deliver </option>
+                                    <option {{$order->state_id== '3'?'selected':''}} value="3">Delivered</option>
+                                    <option {{$order->state_id== '4'?'selected':''}} value="4">Canceled</option>
                                   </select>
                                   <button type="submit" class="btn btn-primary float-end">Update</button>
                                 </form>

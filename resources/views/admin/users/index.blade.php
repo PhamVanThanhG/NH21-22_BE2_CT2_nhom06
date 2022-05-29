@@ -18,7 +18,7 @@
                 @foreach ( $user as $item )
                 <tr>
                     <td>{{$item->id}}</td>
-                    <td>{{$item->name.' '.$item->lname}}</td>
+                    <td>{{$item->name}}</td>
                     <td>{{$item->email}}</td>
                     <td>
                         <a href="{{url('view-users/'.$item->id)}}" class="btn btn-primary"><i class="fa-solid fa-eye"></i> View</a>

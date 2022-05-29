@@ -16,6 +16,7 @@ class Order extends Model
         'state_id',
         'temporary_price',
         'total_price',
+        'user_id',
         'created_at',
         'updated_at',
         'fullname',
@@ -32,10 +33,12 @@ class Order extends Model
         // 'tracking_no',
     ];
     function state(){
-        return $this->belongsTo(State::class, 'state_id');
+        return $this->belongsTo(State::class,'state_id');
     }
-    public function order_items()
+    public function order_product()
     {
-        return $this->hasMany(OrderItems::class);
+        return $this->hasMany(OrderedProduct::class,'order_id','order_id');
     }
+
+
 }

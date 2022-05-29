@@ -16,14 +16,15 @@ class CreateOrderTable extends Migration
         Schema::create('order', function (Blueprint $table) {
             $table->id();
             $table->string('order_id');
-            $table->BigInteger('state_id');
+            $table->BigInteger('state_id')->default(1);
             $table->double('temporary_price', 8, 1);
             $table->double('total_price', 8, 1);
             $table->BigInteger('user_id');
             $table->string('fullname');
             $table->string('phonenumber');
             $table->string('address');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             // $table->id();
             // $table->string('user_id');
             // $table->string('fname');
