@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="col-md-2 text-center pt-3 px-5 ">
-                        <button class=" btn btn-outline-danger rounded delete-cart-item">Delete</button>
+                        <button class=" btn btn-outline-danger rounded delete-cart-item"><i class="fa-solid fa-trash"></i> Delete</button>
                     </div>
                 </div>
                 @php
@@ -58,7 +58,7 @@
             </div>
             <div class="card-footer">
                 <h6>Total Price: {{$total}} $
-                <a href="{{url('checkout')}}"><button class="btn btn-outline-success float-end">Checkout!</button></a>
+                <a href="{{url('checkout')}}"><button class="btn btn-outline-success float-end"><i class="fa-solid fa-bag-shopping"></i> Checkout!</button></a>
                 </h6>
             </div>
             @else

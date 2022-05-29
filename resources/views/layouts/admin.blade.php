@@ -20,6 +20,10 @@
     <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet">
     {{-- <link href="{{ asset('frontend/css/bootstrap5.css') }}" rel="stylesheet"> --}}
 
+     {{-- font awesome --}}
+     <script src="https://kit.fontawesome.com/fca7e71b15.js" crossorigin="anonymous"></script>
+
+
 </head>
 <body>
     <div class="wrapper ">

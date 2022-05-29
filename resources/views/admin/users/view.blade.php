@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header bg-primary text-white">
                     <h4>Users Detail
-                        <a href="{{url('users')}}"><button class="btn btn-warning float-right">Back</button></a>
+                        <a href="{{url('users')}}"><button class="btn btn-warning float-right"><i class="fa-solid fa-backward"></i> Back</button></a>
                     </h4>
                 </div>
                 <div class="card-body">

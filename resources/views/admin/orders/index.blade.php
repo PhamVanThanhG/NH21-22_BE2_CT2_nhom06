@@ -30,7 +30,7 @@
                                 <td>{{$item->total_price}} $</td>
                                 <td>{{$item->status == 0?'Confirmed':'Completed'}}</td>
                                 <td>
-                                    <a href="{{url('admin/view-order/'.$item->id)}}"><button class="btn btn-primary">View</button></a>
+                                    <a href="{{url('admin/view-order/'.$item->id)}}"><button class="btn btn-primary"><i class="fa-solid fa-eye"></i> View</button></a>
                                 </td>
                             </tr>
                             @endforeach

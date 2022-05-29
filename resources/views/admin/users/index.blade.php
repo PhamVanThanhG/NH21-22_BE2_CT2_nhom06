@@ -21,7 +21,7 @@
                     <td>{{$item->name.' '.$item->lname}}</td>
                     <td>{{$item->email}}</td>
                     <td>
-                        <a href="{{url('view-users/'.$item->id)}}" class="btn btn-primary">View</a>
+                        <a href="{{url('view-users/'.$item->id)}}" class="btn btn-primary"><i class="fa-solid fa-eye"></i> View</a>
                     </td>
                 </tr>
                 @endforeach

@@ -41,10 +41,10 @@
                                 </div>
                             </div>
                             <div class="col-md-2 text-center pt-3  ">
-                                <button class=" btn btn-outline-success addtocart-btn rounded ">Add To Cart</button>
+                                <button class=" btn btn-outline-success addtocart-btn rounded "><i class="fa-solid fa-cart-arrow-down"></i> Add To Cart</button>
                             </div>
                             <div class="col-md-2 text-center pt-3  ">
-                                <button class="btn btn-outline-danger rounded delete-wishlist-item">Delete</button>
+                                <button class="btn btn-outline-danger rounded delete-wishlist-item"><i class="fa-solid fa-trash"></i> Delete</button>
                             </div>
                         </div>
                     @endforeach
