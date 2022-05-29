@@ -2,7 +2,6 @@
 @section('content')
 <?php
 
-use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 
 function getRatingByProductId($array, $productid)

@@ -46,7 +46,6 @@ class CartController extends Controller
                 [
                     'product_id' => $productID,
                     'user_id' => Auth::user()->id,
-                    'total_price' => 0,
                     'quantity' => $qty,
                 ]
             ]);

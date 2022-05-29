@@ -17,12 +17,9 @@ class CreateRatingTable extends Migration
             $table->id();
             $table->BigInteger('product_id');
             $table->BigInteger('user_id');
-            $table->mediumText('star_rated');
+            $table->double('rating_value', 2, 1);
+            $table->string('comment');
             $table->timestamps();
-
-
-
-
         });
     }
 

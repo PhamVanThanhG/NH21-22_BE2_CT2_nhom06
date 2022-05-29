@@ -9,11 +9,11 @@ class Rating extends Model
 {
     use HasFactory;
     protected $table = 'rating';
-    protected $fillable =[
-        'user_id',
-        'product_id',
-        'star_rated',
-    ];
+    // protected $fillable =[
+    //     'user_id',
+    //     'product_id',
+    //     'star_rated',
+    // ];
     function user(){
         return $this->belongsTo(Users::class, 'user_id');
     }
