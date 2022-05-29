@@ -30,7 +30,6 @@ class Order extends Model
         'total_price',
         'status',
         'tracking_no',
-
     ];
     function state(){
         return $this->belongsTo(State::class, 'state_id');
