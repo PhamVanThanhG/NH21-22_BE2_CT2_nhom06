@@ -2,6 +2,9 @@
 @section('content')
 
 <?php
+
+use Illuminate\Support\Facades\Auth;
+
 function getRatingByProductId($array, $productid)
 {
   $result = array();
@@ -70,11 +73,11 @@ $index = $sizeLists / 6 + 1;
               <div style="position: absolute;">
                 <img src="{{ asset('images/'.$value['image']) }}" alt="">
               </div>
-              <a href="#" class="add_cart_btn">
-                <span>
-                  Add To Cart<br>
-                </span>
-              </a>
+              <a href="{{ url('/addcartonindex/'.$value['id'])}}" class="add_cart_btn" id="addcartonindex">
+                  <span>
+                    Add To Cart<br>
+                  </span>
+                </a>
             </div>
             <div class="detail-box">
               <a href="/detail/{{ $value['id'] }}">
@@ -215,11 +218,11 @@ $index = $sizeLists / 6 + 1;
               <div style="position: absolute;">
                 <img src="{{ asset('images/'.$value['image']) }}" alt="">
               </div>
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart<br>
-                </span>
-              </a>
+              <a href="{{ url('/addcartonindex/'.$value['id'])}}" class="add_cart_btn" id="addcartonindex">
+                  <span>
+                    Add To Cart<br>
+                  </span>
+                </a>
             </div>
             <div class="detail-box">
             <a href="/detail/{{ $value['id'] }}">
@@ -323,5 +326,20 @@ $index = $sizeLists / 6 + 1;
   <?php
   }
   ?>
+    const addcartonindex = document.getElementById("addcartonindex");
+  addcartonindex.addEventListener('click', () => {
+    <?php
+    if (!Auth::check()) {
+    ?>
+      swal("ADD CART", "You must login before add product to your cart!");
+      event.preventDefault();
+    <?php
+    } else {
+    ?>
+      swal("ADD CART", "Add that product to your cart successfully!");
+    <?php
+    }
+    ?>
+  })
 </script>
 @endsection

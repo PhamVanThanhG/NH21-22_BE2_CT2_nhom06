@@ -130,3 +130,4 @@ Route::get("/cancelorder/{order_id}", [OrderController::class, 'cancel']);
 Route::post("/addreview", [OrderController::class, 'addreview']);
 Route::get("/search", [ProductController::class, 'search']);
 Route::get("/filter/{priceToSet}/{saleToSet}", [ProductController::class, 'filter']);
+Route::get("/addcartonindex/{product_id}",[CartController::class, 'addcartonindex']);

@@ -44,6 +44,11 @@
   }
 </style>
 <?php
+
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 function getRatingByProductId($array, $productid)
 {
   $result = array();
@@ -97,7 +102,7 @@ if (count($productsShow) < 6) {
             </div>
             <div class="col-md-6">
               <div class="img-box">
-                <img src="{{ asset('images/slider-img.png') }}" alt="">
+                <img src="{{ asset('images/slider-img.png') }}" alt="" height="444">
               </div>
             </div>
           </div>
@@ -189,7 +194,7 @@ if (count($productsShow) < 6) {
             </div>
             <div class="col-md-6">
               <div class="img-box">
-                <img src="{{ asset('images/slider-img.png') }}" alt="">
+                <img src="{{ asset('images/slider-img.png') }}" alt="" height="444">
               </div>
             </div>
           </div>
@@ -321,14 +326,14 @@ if (count($productsShow) < 6) {
                 <div style="position: absolute;">
                   <img src="{{ asset('images/'.$value['image']) }}" alt="">
                 </div>
-                <a href="" class="add_cart_btn">
+                <a href="{{ url('/addcartonindex/'.$value['id'])}}" class="add_cart_btn" id="addcartonindex">
                   <span>
                     Add To Cart<br>
                   </span>
                 </a>
               </div>
               <div class="detail-box">
-                <a href="/detail/{{ $value['id'] }}">
+                <a href="{{ url('/detail/'.$value['id'])}}">
                   <h5>
                     <?php echo $value['name'] ?>
                   </h5>
@@ -691,11 +696,11 @@ if (count($productsShow) < 6) {
               <div style="position: absolute;">
                 <img src="{{ asset('images/'.$value['image']) }}" alt="">
               </div>
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart<br>
-                </span>
-              </a>
+              <a href="{{ url('/addcartonindex/'.$value['id'])}}" class="add_cart_btn" id="addcartonindex">
+                  <span>
+                    Add To Cart<br>
+                  </span>
+                </a>
             </div>
             <div class="detail-box">
             <a href="/detail/{{ $value['id'] }}">
@@ -940,6 +945,22 @@ if (count($productsShow) < 6) {
     } else {
       window.location = "{{ url('/filter/price0/all')}}";
     }
+  })
+
+  const addcartonindex = document.getElementById("addcartonindex");
+  addcartonindex.addEventListener('click', () => {
+    <?php
+    if (!Auth::check()) {
+    ?>
+      swal("ADD CART", "You must login before add product to your cart!");
+      event.preventDefault();
+    <?php
+    } else {
+    ?>
+      swal("ADD CART", "Add that product to your cart successfully!");
+    <?php
+    }
+    ?>
   })
 </script>
 @endsection
