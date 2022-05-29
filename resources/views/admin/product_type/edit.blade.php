@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 <div class="card">
-    <div class="card-header">
+    <div class="card-header bg-primary text-white">
         <h4>Edit Product Type</h4>
     </div>
     <div class="card-body">
@@ -13,7 +13,7 @@
                     <label for="">Type Name: </label>
                     <input type="text" value="{{$product_type->type_name}}" class="form-control" name ="name">
                 </div>
-                
+
                 <div class="col-12">
                     <label for="">Image: </label>
                     @if ($product_type->image)
@@ -28,5 +28,5 @@
         </form>
     </div>
 </div>
-    
+
 @endsection

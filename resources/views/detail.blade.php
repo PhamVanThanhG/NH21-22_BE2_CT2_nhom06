@@ -2,7 +2,6 @@
 @section('content')
 <?php
 
-use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 
 function getRatingByProductId($array, $productid)
@@ -22,7 +21,7 @@ function getRatingValue($array)
     for ($i = 0; $i < count($array); $i++) {
         $result += $array[$i]['rating_value'];
     }
-    return ceil($result / count($array));
+    return floor($result / count($array));
 }
 
 function getArrayRatingValue($array)

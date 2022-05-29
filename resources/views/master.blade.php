@@ -86,8 +86,8 @@ use Illuminate\Support\Facades\Auth;
                 </span>
               </a>
             </div>
-            <form class="search_form">
-              <input type="text" class="form-control" placeholder="Search here...">
+            <form class="search_form" method="get" action="{{ url('/search')}}">
+              <input name="keyword" type="text" class="form-control" placeholder="Enter the name of the product" style="width: 300px;">
               <button class="" type="submit">
                 <i class="fa fa-search" aria-hidden="true"></i>
               </button>
@@ -124,7 +124,7 @@ use Illuminate\Support\Facades\Auth;
                   </li>
                   <li>
                     <a class="dropdown-item" href="{{ url('/myorders')}}">
-                    <i class="fa-solid fa-bag-shopping"></i> My orders
+                      <i class="fa-solid fa-bag-shopping"></i> My orders
                     </a>
                   </li>
                   <li>

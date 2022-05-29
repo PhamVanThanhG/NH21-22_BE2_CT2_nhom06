@@ -1,6 +1,6 @@
 @extends('layouts.front')
 @section('title')
-    Mimics
+    Minics
 @endsection
 @section('content')
 @include('layouts.inc.slider')
@@ -54,8 +54,9 @@
             @endforeach
         </div>
     </section>
-
+@include('layouts.inc.frontabout')
 @endsection
+
 @section('scripts')
     <script>
         $('.featured-carousel').owlCarousel({
@@ -76,3 +77,4 @@
 })
     </script>
 @endsection
+

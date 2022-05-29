@@ -20,10 +20,6 @@ class CreateRatingTable extends Migration
             $table->double('rating_value', 2, 1);
             $table->string('comment');
             $table->timestamps();
-           
-
-
-            
         });
     }
 

@@ -53,10 +53,9 @@
               </p>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-              <a class="dropdown-item" href="#">Profile</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">>
-                {{ __('Logout') }}
+
+              <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> {{ __('Logout') }}
               </a>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf

@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 @section('content')
 <div class="card">
-    <div class="card-header">
-        <h1>Products</h1>
+    <div class="card-header bg-primary text-white">
+        <h4>Products</h4>
     </div>
     <div class="card-body">
         <table class="table table-bordered table-striped">
@@ -27,7 +27,7 @@
                     <td>{{$item->product_type->type_name}}</td>
                     <td>{{$item->description}}</td>
                     <td>
-                       <img class="type-image" src="{{asset('images/'.$item->image)}}" alt=""> 
+                       <img class="type-image" src="{{asset('images/'.$item->image)}}" alt="">
                     </td>
                     <td>{{$item->price}}$</td>
                     <td>{{$item->discount->values*100}}%</td>
@@ -38,10 +38,10 @@
                     </td>
                 </tr>
                 @endforeach
-               
+
             </tbody>
         </table>
     </div>
 </div>
-    
+
 @endsection

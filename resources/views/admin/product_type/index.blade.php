@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 @section('content')
 <div class="card">
-    <div class="card-header">
-        <h1>Product Type</h1>
+    <div class="card-header bg-primary text-white">
+        <h4>Product Type</h4>
     </div>
     <div class="card-body">
         <table class="table table-bordered table-striped">
@@ -20,7 +20,7 @@
                     <td>{{$item->id}}</td>
                     <td>{{$item->type_name}}</td>
                     <td>
-                       <img class="type-image" src="{{asset('images/'.$item->image)}}" alt=""> 
+                       <img class="type-image" src="{{asset('images/'.$item->image)}}" alt="">
                     </td>
                     <td>
                         <a href="{{url('edit_product_type/'.$item->id)}}" class="btn btn-primary">Edit</a>
@@ -28,10 +28,10 @@
                     </td>
                 </tr>
                 @endforeach
-               
+
             </tbody>
         </table>
     </div>
 </div>
-    
+
 @endsection
