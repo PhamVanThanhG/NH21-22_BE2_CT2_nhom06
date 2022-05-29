@@ -12,15 +12,9 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4 mt-3">
-                            <label for="">First Name</label>
+                            <label for="">Full Name</label>
                             <div class="p-2 border">
                                 {{$user->name}}
-                            </div>
-                        </div>
-                        <div class="col-md-4 mt-3">
-                            <label for="">Last Name</label>
-                            <div class="p-2 border">
-                                {{$user->lname}}
                             </div>
                         </div>
                         <div class="col-md-4 mt-3">
@@ -32,13 +26,13 @@
                         <div class="col-md-4 mt-3">
                             <label for="">Phone Number</label>
                             <div class="p-2 border">
-                                {{$user->phone}}
+                                {{$order->phonenumber}}
                             </div>
                         </div>
                         <div class="col-md-4 mt-3">
                             <label for="">Address</label>
                             <div class="p-2 border">
-                                {{$user->address}}
+                                {{$order->address}}
                             </div>
                         </div>
                         <div class="col-md-4 mt-3">

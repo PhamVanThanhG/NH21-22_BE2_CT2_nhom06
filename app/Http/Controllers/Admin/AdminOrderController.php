@@ -10,7 +10,7 @@ class AdminOrderController extends Controller
 {
     public function orders()
     {
-        $order = Order::where('status','0')->get();
+        $order = Order::where('state_id','<','3')->get();
         return view('admin.orders.index',compact('order'));
     }
     public function view($id)
@@ -21,13 +21,13 @@ class AdminOrderController extends Controller
     public function update(Request $request,$id)
     {
         $order = Order::find($id);
-        $order->status = $request->input('order_status');
+        $order->state_id = $request->input('order_status');
         $order->save();
         return redirect('orders')->with('status','Order Update Successfully!');
     }
     public function orderhistory()
     {
-        $order = Order::where('status','1')->get();
+        $order = Order::where('state_id','>','2')->get();
         return view('admin.orders.history',compact('order'));
     }
 }

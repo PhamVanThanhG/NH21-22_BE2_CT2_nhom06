@@ -26,9 +26,9 @@
                             @foreach ($order as $item)
                             <tr>
                                 <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
-                                <td>{{$item->tracking_no}}</td>
+                                <td>{{$item->order_id}}</td>
                                 <td>{{$item->total_price}} $</td>
-                                <td>{{$item->status == 0?'Confirmed':'Completed'}}</td>
+                                <td>{{$item->status == 1?'To Confirm':'To Deliver'}}</td>
                                 <td>
                                     <a href="{{url('admin/view-order/'.$item->id)}}"><button class="btn btn-primary"><i class="fa-solid fa-eye"></i> View</button></a>
                                 </td>
