@@ -18,7 +18,7 @@ function getRatingValue($array)
   for ($i = 0; $i < count($array); $i++) {
     $result += $array[$i]['rating_value'];
   }
-  return ceil($result / count($array));
+  return floor($result / count($array));
 }
 $productsShow = array();
 for ($i = 0; $i < count($product); $i++) {
