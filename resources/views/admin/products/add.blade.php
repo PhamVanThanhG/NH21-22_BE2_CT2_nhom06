@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 <div class="card">
-    <div class="card-header">
+    <div class="card-header bg-primary text-white">
         <h4>Add Product</h4>
     </div>
     <div class="card-body">
@@ -19,7 +19,7 @@
                        @foreach ($product_type as $item )
                        <option value="{{$item->id}}">{{$item->type_name}}</option>
                        @endforeach
-                        
+
                       </select>
                 </div>
                 <div class="col-6">
@@ -41,7 +41,7 @@
                        @foreach ($discount as $item )
                        <option value="{{$item->id}}">{{$item->values*100}}%</option>
                        @endforeach
-                        
+
                       </select>
                 </div>
                 <div class="col-2">
@@ -55,5 +55,5 @@
         </form>
     </div>
 </div>
-    
+
 @endsection

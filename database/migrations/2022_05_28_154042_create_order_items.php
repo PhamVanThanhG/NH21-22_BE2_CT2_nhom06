@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRatingTable extends Migration
+class CreateOrderItems extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateRatingTable extends Migration
      */
     public function up()
     {
-        Schema::create('rating', function (Blueprint $table) {
+        Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->BigInteger('product_id');
-            $table->BigInteger('user_id');
-            $table->string('star_rated');
+            $table->string('order_id');
+            $table->string('product_id');
+            $table->string('quantity');
+            $table->string('price');
+
+
             $table->timestamps();
-
-
-
-
         });
     }
 
@@ -33,6 +32,6 @@ class CreateRatingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rating');
+        Schema::dropIfExists('order_items');
     }
 }

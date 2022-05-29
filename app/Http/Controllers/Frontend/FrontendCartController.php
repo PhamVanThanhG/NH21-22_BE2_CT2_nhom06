@@ -58,4 +58,23 @@ class FrontendCartController extends Controller
 
 
     }
+    public function updatecart(Request $request)
+    {
+        $prod_id = $request->input('prod_id');
+        $prod_qty = $request->input('prod_qty');
+        if (Auth::check()) {
+            if (Cart::where('product_id',$prod_id)->where('user_id',Auth::id())->exists()){
+                $cart = Cart::where('product_id',$prod_id)->where('user_id',Auth::id())->first();
+                $cart->quantity = $prod_qty;
+                $cart->update();
+                return response()->json(['status' => "Quantity updated!"]);
+            }
+        }
+
+    }
+    public function cartcount()
+    {
+        $cartcount = Cart::where('user_id',Auth::id())->count();
+        return response()->json(['count' => $cartcount]);
+    }
 }

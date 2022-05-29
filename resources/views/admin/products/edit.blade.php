@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 @section('content')
 <div class="card">
-    <div class="card-header">
-        <h4>Add Product</h4>
+    <div class="card-header bg-primary text-white">
+        <h4>Edit Product</h4>
     </div>
     <div class="card-body">
         <form action="{{url('update_products/'.$product->id)}}" method="post" enctype="multipart/form-data">
@@ -16,7 +16,7 @@
                 <div class="col-6">
                     <label for="">Type: </label>
                     <select class="form-select" name="type_id">
-                        <option value="">{{$product->product_type->type_name}}</option>  
+                        <option value="">{{$product->product_type->type_name}}</option>
                       </select>
                 </div>
                 <div class="col-6">
@@ -42,7 +42,7 @@
                         @if ($item->id != $product->discount->id)
                             <option value="{{$item->id}}">{{$item->values*100}}%</option>
                         @endif
-                       
+
                        @endforeach
                       </select>
                 </div>
@@ -57,5 +57,5 @@
         </form>
     </div>
 </div>
-    
+
 @endsection

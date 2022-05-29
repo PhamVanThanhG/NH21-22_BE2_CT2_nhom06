@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="{{url('/')}}">Mimics</a>
+      <a class="navbar-brand" href="{{url('/')}}">Minics</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -9,14 +9,19 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
+            <a class="nav-link" href="{{url('product')}}">Product</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('category')}}">Category</a>
+            <a class="nav-link" href="{{url('cart')}}">Cart
+            <span class="badge badge-pill bg-primary cart-count">0</span>
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('cart')}}">Cart</a>
+            <a class="nav-link" href="{{url('wishlist')}}">Wishlist
+                <span class="badge badge-pill bg-success wishlist-count">0</span>
+            </a>
           </li>
           <ul class="navbar-nav ms-auto">
             <!-- Authentication Links -->
@@ -39,10 +44,15 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                      <a class="dropdown-item" href="#">
-                          My Profile
+                      <a class="dropdown-item" href="{{url('cart')}}">
+                          My Cart
                         </a>
                     </li>
+                    <li>
+                        <a class="dropdown-item" href="{{url('my-order')}}">
+                            My Order
+                          </a>
+                      </li>
                     <li>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">>
                             {{ __('Logout') }}

@@ -2,7 +2,7 @@
 @section('content')
 <div class="card">
     <div class="card-header bg-primary text-white">
-        <h4>Product Type</h4>
+        <h4>Register Users</h4>
     </div>
     <div class="card-body">
         <table class="table table-bordered table-striped">
@@ -10,21 +10,18 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Image</th>
+                    <th>Email</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ( $product_type as $item )
+                @foreach ( $user as $item )
                 <tr>
                     <td>{{$item->id}}</td>
-                    <td>{{$item->type_name}}</td>
+                    <td>{{$item->name.' '.$item->lname}}</td>
+                    <td>{{$item->email}}</td>
                     <td>
-                       <img class="type-image" src="{{asset('images/'.$item->image)}}" alt="">
-                    </td>
-                    <td>
-                        <a href="{{url('edit_product_type/'.$item->id)}}" class="btn btn-primary">Edit</a>
-                        <a href="{{url('delete_product_type/'.$item->id)}}" class="btn btn-danger">Delete</a>
+                        <a href="{{url('view-users/'.$item->id)}}" class="btn btn-primary">View</a>
                     </td>
                 </tr>
                 @endforeach
