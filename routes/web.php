@@ -17,6 +17,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendUserController;
 use App\Http\Controllers\Frontend\RatingController;
+use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\Frontend\WishlistController;
 
 /*
@@ -73,6 +74,10 @@ Route::get('wishlist',[WishlistController::class,'index']);
 
 Route::post('add-rating',[RatingController::class,'add']);
 
+Route::get('add-review/{name}/userreview',[ReviewController::class,'add']);
+Route::post('add-review',[ReviewController::class,'create']);
+Route::get('edit-review/{name}/userreview',[ReviewController::class,'edit']);
+Route::put('update-review',[ReviewController::class,'update']);
 
 
 });
