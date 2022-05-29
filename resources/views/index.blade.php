@@ -1,5 +1,48 @@
 @extends('master')
 @section('content')
+<style>
+  .chose {
+    background-color: red !important;
+  }
+
+  .filterDiv {
+    float: left;
+    background-color: #2196F3;
+    color: #ffffff;
+    width: 150px;
+    line-height: 50px;
+    text-align: center;
+    margin: 2px;
+    display: none;
+  }
+
+  .show {
+    display: block;
+  }
+
+  .container {
+    margin-top: 20px;
+    overflow: hidden;
+  }
+
+  /* Style the buttons */
+  .btn {
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: #ddd;
+  }
+
+  .btn.activeww {
+    background-color: #666;
+    color: white;
+  }
+</style>
 <?php
 function getRatingByProductId($array, $productid)
 {
@@ -21,8 +64,16 @@ function getRatingValue($array)
   return floor($result / count($array));
 }
 $productsShow = $product;
-$sizeLists = count($product);
+$sizeLists = count($productsShow);
+
 $index = $sizeLists / 6 + 1;
+
+$sizeToShowFirst = 0;
+if (count($productsShow) < 6) {
+  $sizeToShowFirst = count($productsShow);
+} else {
+  $sizeToShowFirst = 6;
+}
 ?>
 <!-- slider section -->
 <section class="slider_section ">
@@ -46,7 +97,7 @@ $index = $sizeLists / 6 + 1;
             </div>
             <div class="col-md-6">
               <div class="img-box">
-                <img src="../images/slider-img.png" alt="">
+                <img src="{{ asset('images/slider-img.png') }}" alt="">
               </div>
             </div>
           </div>
@@ -54,7 +105,7 @@ $index = $sizeLists / 6 + 1;
       </div>
       <div class="carousel-item">
         <div class="container ">
-            <!-- Featured product -->
+          <!-- Featured product -->
           <div class="row">
             <div class="col-md-12">
               <div class="section-title text-center">
@@ -138,7 +189,7 @@ $index = $sizeLists / 6 + 1;
             </div>
             <div class="col-md-6">
               <div class="img-box">
-                <img src="../images/slider-img.png" alt="">
+                <img src="{{ asset('images/slider-img.png') }}" alt="">
               </div>
             </div>
           </div>
@@ -169,113 +220,196 @@ $index = $sizeLists / 6 + 1;
         Our Products
       </h2>
     </div>
+    <div class="row">
+      <div class="col-2">
+        <button id="filter" style="background-color: #1d3b96; color: white;">Filter ></button>
+        <a href="{{ url('/')}}"><Button>Reset</Button></a>
+      </div>
+      <div class="col" id="filterbox" style="display: none;">
+        <div>
+          <div id="myBtnContainer">
+            <button class="btn activeww" onclick="filterSelection('all')"> Show all</button>
+            <button class="btn" onclick="filterSelection('price')">Price</button>
+            <button class="btn" onclick="filterSelection('sale')">Sale</button>
+          </div>
+          <div class="container">
+
+            <div class="filterDiv price <?php
+                                        if (isset($price)) {
+                                          if ($price == 1) {
+                                            echo "chose";
+                                          }
+                                        }
+                                        ?>" id="price1"> 0 - $100</div>
+
+            <div class="filterDiv price <?php
+                                        if (isset($price)) {
+                                          if ($price == 2) {
+                                            echo "chose";
+                                          }
+                                        }
+                                        ?>" id="price2"> $101 - $500</div>
+
+            <div class="filterDiv price <?php
+                                        if (isset($price)) {
+                                          if ($price == 3) {
+                                            echo "chose";
+                                          }
+                                        }
+                                        ?>" id="price3"> $501 - $1000</div>
+
+
+            <div class="filterDiv price <?php
+                                        if (isset($price)) {
+                                          if ($price == 4) {
+                                            echo "chose";
+                                          }
+                                        }
+                                        ?>" id="price4"> > $1000</div>
+
+
+            <div class="filterDiv sale <?php
+                                        if (isset($sale)) {
+                                          if ($sale == 'sale') {
+                                            echo "chose";
+                                          }
+                                        }
+                                        ?>" id="sale">Sale</div>
+
+            <div class="filterDiv sale <?php
+                                        if (isset($sale)) {
+                                          if ($sale == "notsale") {
+                                            echo "chose";
+                                          }
+                                        }
+                                        ?>" id="notsale">Not sale</div>
+
+            <div class="filterDiv sale <?php
+                                        if (isset($sale)) {
+                                          if ($sale == "all") {
+                                            echo "chose";
+                                          }
+                                        }
+                                        ?>" id="allsale">All</div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="row" id="productShow">
       <?php
-      for ($i = 0; $i < 6; $i++) {
-        //count($productsShow)
-        $value = $productsShow[$i];
+      if (count($productsShow) == 0) {
+        echo ("No product");
+      } else {
       ?>
-        <div class="col-sm-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <?php
-              if ($value->discount->active != 0) {
-              ?>
-                <div class="product-label">
-                  <span class="sale">-<?php echo ($value->discount->values * 100) ?>%</span>
-                </div>
-              <?php
-              }
-              ?>
-              <div style="position: absolute;">
-                <img src="{{ asset('images/'.$value['image']) }}" alt="">
-              </div>
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart<br>
-                </span>
-              </a>
-            </div>
-            <div class="detail-box">
-              <a href="/detail/{{ $value['id'] }}">
-                <h5>
-                  <?php echo $value['name'] ?>
-                </h5>
-              </a>
-              <div class="product_info">
-                <h5>
-                  <span>$</span><?php echo (number_format($value['price'] * (1 - $value->discount->values))) ?>
-                  <?php
-                  if ($value->discount->active != 0) {
-                  ?>
-                    <del class="product-old-price" style="margin-left: 8px;">$<?php echo (number_format($value['price'])) ?></del>
-                  <?php
-                  }
-                  ?>
-                </h5>
+        <?php
+        for ($i = 0; $i < $sizeToShowFirst; $i++) {
+          //count($productsShow)
+          $value = $productsShow[$i];
+        ?>
+          <div class="col-sm-6 col-lg-4">
+            <div class="box">
+              <div class="img-box">
                 <?php
-                $ratingProduct = getRatingByProductId($rating, $value['id']);
-                if (count($ratingProduct) > 0) {
+                if ($value->discount->active != 0) {
                 ?>
-                  <div class="star_container">
-                    <?php
-                    $rating_value = getRatingValue($ratingProduct);
-                    if ($rating_value == 1) {
-                    ?>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
-                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
-                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
-                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
-                      <span>(<?php echo count($ratingProduct) ?>)</span>
-                    <?php
-                    } else if ($rating_value == 2) {
-                    ?>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
-                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
-                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
-                      <span style="color: black;">(<?php echo count($ratingProduct) ?>)</span>
-                    <?php
-                    } else if ($rating_value == 3) {
-                    ?>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
-                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
-                      <span style="color: black;">(<?php echo count($ratingProduct) ?>)</span>
-                    <?php
-                    } else if ($rating_value == 4) {
-                    ?>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
-                      <span style="color: black;">(<?php echo count($ratingProduct) ?>)</span>
-                    <?php
-                    } else if ($rating_value == 5) {
-                    ?>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <span style="color: black;">(<?php echo count($ratingProduct) ?>)</span>
-                    <?php
-                    }
-                    ?>
-
+                  <div class="product-label">
+                    <span class="sale">-<?php echo ($value->discount->values * 100) ?>%</span>
                   </div>
                 <?php
                 }
                 ?>
+                <div style="position: absolute;">
+                  <img src="{{ asset('images/'.$value['image']) }}" alt="">
+                </div>
+                <a href="" class="add_cart_btn">
+                  <span>
+                    Add To Cart<br>
+                  </span>
+                </a>
+              </div>
+              <div class="detail-box">
+                <a href="/detail/{{ $value['id'] }}">
+                  <h5>
+                    <?php echo $value['name'] ?>
+                  </h5>
+                </a>
+                <div class="product_info">
+                  <h5>
+                    <span>$</span><?php echo (number_format($value['price'] * (1 - $value->discount->values))) ?>
+                    <?php
+                    if ($value->discount->active != 0) {
+                    ?>
+                      <del class="product-old-price" style="margin-left: 8px;">$<?php echo (number_format($value['price'])) ?></del>
+                    <?php
+                    }
+                    ?>
+                  </h5>
+                  <?php
+                  $ratingProduct = getRatingByProductId($rating, $value['id']);
+                  if (count($ratingProduct) > 0) {
+                  ?>
+                    <div class="star_container">
+                      <?php
+                      $rating_value = getRatingValue($ratingProduct);
+                      if ($rating_value == 1) {
+                      ?>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                        <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                        <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                        <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                        <span>(<?php echo count($ratingProduct) ?>)</span>
+                      <?php
+                      } else if ($rating_value == 2) {
+                      ?>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                        <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                        <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                        <span style="color: black;">(<?php echo count($ratingProduct) ?>)</span>
+                      <?php
+                      } else if ($rating_value == 3) {
+                      ?>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                        <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                        <span style="color: black;">(<?php echo count($ratingProduct) ?>)</span>
+                      <?php
+                      } else if ($rating_value == 4) {
+                      ?>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true" style="color: gray;"></i>
+                        <span style="color: black;">(<?php echo count($ratingProduct) ?>)</span>
+                      <?php
+                      } else if ($rating_value == 5) {
+                      ?>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <span style="color: black;">(<?php echo count($ratingProduct) ?>)</span>
+                      <?php
+                      }
+                      ?>
+
+                    </div>
+                  <?php
+                  }
+                  ?>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        <?php
+        }
+        ?>
       <?php
       }
       ?>
@@ -665,5 +799,147 @@ $index = $sizeLists / 6 + 1;
   <?php
   }
   ?>
+</script>
+<script>
+  filterSelection("all")
+
+  function filterSelection(c) {
+    var x, i;
+    x = document.getElementsByClassName("filterDiv");
+    if (c == "all") c = "";
+    for (i = 0; i < x.length; i++) {
+      w3RemoveClass(x[i], "show");
+      if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+    }
+  }
+
+  function w3AddClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+      if (arr1.indexOf(arr2[i]) == -1) {
+        element.className += " " + arr2[i];
+      }
+    }
+  }
+
+  function w3RemoveClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+      while (arr1.indexOf(arr2[i]) > -1) {
+        arr1.splice(arr1.indexOf(arr2[i]), 1);
+      }
+    }
+    element.className = arr1.join(" ");
+  }
+
+  // Add active class to the current button (highlight it)
+  var btnContainer = document.getElementById("myBtnContainer");
+  var btns = btnContainer.getElementsByClassName("btn");
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function() {
+      var current = document.getElementsByClassName("activeww");
+      current[0].className = current[0].className.replace(" activeww", "");
+      this.className += " activeww";
+    });
+  }
+  const filterbox = document.getElementById("filterbox");
+  const filter = document.getElementById("filter");
+  filter.addEventListener('click', () => {
+    if (filterbox.style.display == "none") {
+      filterbox.style.display = "inline";
+    } else {
+      filterbox.style.display = "none";
+    }
+  })
+
+
+  const price1 = document.getElementById("price1");
+  const price2 = document.getElementById("price2");
+  const price3 = document.getElementById("price3");
+  const price4 = document.getElementById("price4");
+  const sale = document.getElementById("sale");
+  const notsale = document.getElementById("notsale");
+  const allsale = document.getElementById("allsale");
+
+  price1.addEventListener('click', () => {
+    if (sale.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price1/sale')}}";
+    } else if (notsale.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price1/notsale')}}";
+    } else {
+      window.location = "{{ url('/filter/price1/all')}}";
+    }
+  })
+  price2.addEventListener('click', () => {
+    if (sale.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price2/sale')}}";
+    } else if (notsale.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price2/notsale')}}";
+    } else {
+      window.location = "{{ url('/filter/price2/all')}}";
+    }
+  })
+  price3.addEventListener('click', () => {
+    if (sale.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price3/sale')}}";
+    } else if (notsale.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price3/notsale')}}";
+    } else {
+      window.location = "{{ url('/filter/price3/all')}}";
+    }
+  })
+  price4.addEventListener('click', () => {
+    if (sale.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price4/sale')}}";
+    } else if (notsale.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price4/notsale')}}";
+    } else {
+      window.location = "{{ url('/filter/price4/all')}}";
+    }
+  })
+  sale.addEventListener('click', () => {
+    if (price1.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price1/sale')}}";
+    } else if (price2.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price2/sale')}}";
+    } else if (price3.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price3/sale')}}";
+    } else if (price4.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price4/sale')}}";
+    } else {
+      window.location = "{{ url('/filter/price0/sale')}}";
+    }
+  })
+  notsale.addEventListener('click', () => {
+    if (price1.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price1/notsale')}}";
+    } else if (price2.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price2/notsale')}}";
+    } else if (price3.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price3/notsale')}}";
+    } else if (price4.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price4/notsale')}}";
+    } else {
+      window.location = "{{ url('/filter/price0/notsale')}}";
+    }
+  })
+
+  allsale.addEventListener('click', () => {
+    if (price1.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price1/all')}}";
+    } else if (price2.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price2/all')}}";
+    } else if (price3.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price3/all')}}";
+    } else if (price4.classList.contains("chose")) {
+      window.location = "{{ url('/filter/price4/all')}}";
+    } else {
+      window.location = "{{ url('/filter/price0/all')}}";
+    }
+  })
 </script>
 @endsection
