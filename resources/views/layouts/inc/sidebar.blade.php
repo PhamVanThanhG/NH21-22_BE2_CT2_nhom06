@@ -56,7 +56,14 @@
               <i class="material-icons">content_paste</i>
               <p>Users</p>
             </a>
-          </li>
+        </li>
+        <li class="nav-item {{Request::is('rating')?'active':'';}}">
+          <a class="nav-link" href="{{url('rating')}}">
+            <i class="fa-solid fa-comment"></i>
+            <p>Reviews</p>
+          </a>
+        </li>
+
       </ul>
     </div>
   </div>

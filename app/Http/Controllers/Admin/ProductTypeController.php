@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\Product_Type;
 // use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class ProductTypeController extends Controller
     public function index()
     {
         $product_type = Product_Type::all();
-        return view('admin.product_type.index',compact('product_type'));
+        return view('admin.product_type.index', compact('product_type'));
     }
     public function add()
     {
@@ -25,48 +26,52 @@ class ProductTypeController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
-            $filename = time().'.'.$ext;
-            $file->move('images/',$filename);
-            $product_type ->image = $filename;
+            $filename = time() . '.' . $ext;
+            $file->move('images/', $filename);
+            $product_type->image = $filename;
         }
         $product_type->type_name = $request->input('name');
         $product_type->save();
-        return redirect('/producttype')->with('status',"Add Successfully!");
+        return redirect('/producttype')->with('status', "Add Successfully!");
     }
     public function edit($id)
     {
         $product_type = Product_Type::find($id);
-        return view('admin.product_type.edit',compact('product_type'));
+        return view('admin.product_type.edit', compact('product_type'));
     }
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $product_type = Product_Type::find($id);
-        if ($request->hasFile('image')){
-            $path = 'images/'.$product_type->image;
-            if (File::exists($path)){
+        if ($request->hasFile('image')) {
+            $path = 'images/' . $product_type->image;
+            if (File::exists($path)) {
                 File::delete($path);
             }
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
-            $filename = time().'.'.$ext;
-            $file->move('images/',$filename);
-            $product_type ->image = $filename;
-
+            $filename = time() . '.' . $ext;
+            $file->move('images/', $filename);
+            $product_type->image = $filename;
         }
         $product_type->type_name = $request->input('name');
         $product_type->update();
-        return redirect('/producttype')->with('status',"Update Successfully!");
+        return redirect('/producttype')->with('status', "Update Successfully!");
     }
     public function delete($id)
     {
         $product_type = Product_Type::find($id);
-        if ($product_type->image ) {
-            $path = 'images/'.$product_type->image;
-            if (File::exists($path)){
-                File::delete($path);
+        $product = Product::where('type_id', $id);
+        if (Product::where('type_id', $id)->exists()) {
+            return redirect('/producttype')->with('status', "Existing Product!");
+        } else {
+            if ($product_type->image) {
+                $path = 'images/' . $product_type->image;
+                if (File::exists($path)) {
+                    File::delete($path);
+                }
             }
+            $product_type->delete();
+            return redirect('/producttype')->with('status', "Delete Successfully!");
         }
-        $product_type->delete();
-        return redirect('/producttype')->with('status',"Delete Successfully!");
     }
 }

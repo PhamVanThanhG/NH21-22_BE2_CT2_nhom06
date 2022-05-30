@@ -19,7 +19,8 @@ class CreateRatingTable extends Migration
             $table->BigInteger('user_id');
             $table->double('rating_value', 2, 1);
             $table->string('comment');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

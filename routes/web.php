@@ -88,34 +88,34 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
- Route::middleware(['auth','isAdmin'])->group(function() {
-    Route::get('/dashboard','Admin\FrontEndController@index');
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+   Route::get('/dashboard', 'Admin\FrontEndController@index');
 
-    Route::get('/producttype','Admin\ProductTypeController@index');
-    Route::get('/add_product_type','Admin\ProductTypeController@add');
-    Route::post('/insert_product_type','Admin\ProductTypeController@insert');
-    Route::get('edit_product_type/{id}',[ProductTypeController::class,'edit']);
-    Route::put('update_product_type/{id}',[ProductTypeController::class,'update']);
-    Route::get('delete_product_type/{id}',[ProductTypeController::class,'delete']);
-    Route::get('products',[ProductsController::class,'index']);
-    Route::get('add_products',[ProductsController::class,'add']);
-    Route::get('add_discount',[DiscountController::class,'add']);
-    Route::post('insert_discount',[DiscountController::class,'insert']);
-    Route::post('insert_products',[ProductsController::class,'insert']);
-    Route::get('edit_products/{id}',[ProductsController::class,'edit']);
-    Route::put('update_products/{id}',[ProductsController::class,'update']);
-    Route::get('delete_products/{id}',[ProductsController::class,'delete']);
+   Route::get('/producttype', 'Admin\ProductTypeController@index');
+   Route::get('/add_product_type', 'Admin\ProductTypeController@add');
+   Route::post('/insert_product_type', 'Admin\ProductTypeController@insert');
+   Route::get('edit_product_type/{id}', [ProductTypeController::class, 'edit']);
+   Route::put('update_product_type/{id}', [ProductTypeController::class, 'update']);
+   Route::get('delete_product_type/{id}', [ProductTypeController::class, 'delete']);
+   Route::get('products', [ProductsController::class, 'index']);
+   Route::get('add_products', [ProductsController::class, 'add']);
+   Route::get('add_discount', [DiscountController::class, 'add']);
+   Route::post('insert_discount', [DiscountController::class, 'insert']);
+   Route::post('insert_products', [ProductsController::class, 'insert']);
+   Route::get('edit_products/{id}', [ProductsController::class, 'edit']);
+   Route::put('update_products/{id}', [ProductsController::class, 'update']);
+   Route::get('delete_products/{id}', [ProductsController::class, 'delete']);
 
 
-    Route::get('orders',[AdminOrderController::class,'orders']);
-    Route::get('admin/view-order/{id}',[AdminOrderController::class,'view']);
-    Route::put('update-order/{id}',[AdminOrderController::class,'update']);
-    Route::get('order-history',[AdminOrderController::class,'orderhistory']);
+   Route::get('orders', [AdminOrderController::class, 'orders']);
+   Route::get('admin/view-order/{id}', [AdminOrderController::class, 'view']);
+   Route::put('update-order/{id}', [AdminOrderController::class, 'update']);
+   Route::get('order-history', [AdminOrderController::class, 'orderhistory']);
 
-    Route::get('users',[AdminUserController::class,'users']);
-    Route::get('view-users/{id}',[AdminUserController::class,'viewusers']);
-
- });
+   Route::get('users', [AdminUserController::class, 'users']);
+   Route::get('view-users/{id}', [AdminUserController::class, 'viewusers']);
+   Route::get('rating', [AdminUserController::class, 'rating']);
+});
 
 Route::get("/", [ProductController::class, 'index']);
 Route::get("/product", [ProductController::class, 'product']);
@@ -134,6 +134,6 @@ Route::get("/cancelorder/{order_id}", [OrderController::class, 'cancel']);
 Route::post("/addreview", [OrderController::class, 'addreview']);
 Route::get("/search", [ProductController::class, 'search']);
 Route::get("/filter/{priceToSet}/{saleToSet}", [ProductController::class, 'filter']);
-Route::get("/addcartonindex/{product_id}",[CartController::class, 'addcartonindex']);
+Route::get("/addcartonindex/{product_id}", [CartController::class, 'addcartonindex']);
 
 Route::get("/wishlist", [ProductController::class, 'wishlist']);
