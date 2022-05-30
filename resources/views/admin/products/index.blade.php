@@ -33,8 +33,8 @@
                     <td>{{$item->discount->values*100}}%</td>
                     <td>{{$item->feature}}</td>
                     <td>
-                        <a href="{{url('edit_products/'.$item->id)}}" class="btn btn-primary">Edit</a>
-                        <a href="{{url('delete_products/'.$item->id)}}" class="btn btn-danger">Delete</a>
+                        <a href="{{url('edit_products/'.$item->id)}}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                        <a href="{{url('delete_products/'.$item->id)}}" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</a>
                     </td>
                 </tr>
                 @endforeach

@@ -23,6 +23,7 @@
                                 {{$user->email}}
                             </div>
                         </div>
+                        @if ($order)
                         <div class="col-md-4 mt-3">
                             <label for="">Phone Number</label>
                             <div class="p-2 border">
@@ -35,6 +36,7 @@
                                 {{$order->address}}
                             </div>
                         </div>
+                        @endif
                         <div class="col-md-4 mt-3">
                             <label for="">Role</label>
                             <div class="p-2 border">

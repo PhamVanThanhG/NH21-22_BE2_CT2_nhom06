@@ -39,6 +39,12 @@
             <p>Add Products</p>
           </a>
         </li>
+        <li class="nav-item {{Request::is('add_discount')?'active':'';}}">
+            <a class="nav-link" href="{{url('add_discount')}}">
+              <i class="fa-solid fa-plus"></i>
+              <p>Add Discount</p>
+            </a>
+          </li>
         <li class="nav-item {{Request::is('orders')?'active':'';}}">
           <a class="nav-link" href="{{url('orders')}}">
             <i class="fa-solid fa-book-medical"></i>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\DiscountController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\ProductTypeController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\Frontend\FrontendUserController;
 use App\Http\Controllers\Frontend\RatingController;
 use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\Frontend\WishlistController;
+use App\Models\Discount;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,6 +99,8 @@ Auth::routes();
     Route::get('delete_product_type/{id}',[ProductTypeController::class,'delete']);
     Route::get('products',[ProductsController::class,'index']);
     Route::get('add_products',[ProductsController::class,'add']);
+    Route::get('add_discount',[DiscountController::class,'add']);
+    Route::post('insert_discount',[DiscountController::class,'insert']);
     Route::post('insert_products',[ProductsController::class,'insert']);
     Route::get('edit_products/{id}',[ProductsController::class,'edit']);
     Route::put('update_products/{id}',[ProductsController::class,'update']);
