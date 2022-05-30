@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-12">
                     <label for="">Discount: </label>
-                    <input type="number" class="form-control" name ="discount">
+                    <input type="number" class="form-control" name ="discount" required>
                 </div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Submit</button>

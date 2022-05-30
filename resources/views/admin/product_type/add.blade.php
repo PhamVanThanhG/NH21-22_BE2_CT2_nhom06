@@ -10,11 +10,11 @@
             <div class="row">
                 <div class="col-12">
                     <label for="">Type Name: </label>
-                    <input type="text" class="form-control" name ="name">
+                    <input type="text" class="form-control" name ="name" required>
                 </div>
                 <div class="col-12">
                     <label for="">Image: </label>
-                    <input type="file" class="form-control" name ="image">
+                    <input type="file" class="form-control" name ="image" required>
                 </div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Submit</button>

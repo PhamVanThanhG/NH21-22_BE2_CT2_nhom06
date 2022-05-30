@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-12">
                     <label for="">Type Name: </label>
-                    <input type="text" value="{{$product_type->type_name}}" class="form-control" name ="name">
+                    <input type="text" value="{{$product_type->type_name}}" class="form-control" name ="name" required>
                 </div>
 
                 <div class="col-12">
@@ -19,7 +19,7 @@
                     @if ($product_type->image)
                     <img class="type-image" src="{{asset('images/'.$product_type->image)}}" alt="">
                 @endif
-                    <input type="file" class="form-control" name ="image">
+                    <input type="file" class="form-control" name ="image" required>
                 </div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Submit</button>
