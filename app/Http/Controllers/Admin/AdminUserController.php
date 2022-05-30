@@ -27,4 +27,10 @@ class AdminUserController extends Controller
         $rating = Rating::all();
         return view('admin.users.rating', compact('rating'));
     }
+    public function delete($id)
+    {
+        $rating = Rating::find($id);
+        $rating->delete();
+        return redirect('rating')->with('status', 'Delete Review Successfully!');
+    }
 }

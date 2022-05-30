@@ -13,6 +13,7 @@
                     <th>Rating Number</th>
                     <th>Comment</th>
                     <th>Product</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,6 +25,9 @@
                     <td>{{$item->comment}}</td>
                     <td>{{$item->product->name}}
                         <img class="type-image" src="{{asset('images/'.$item->product->image)}}" alt="">
+                    </td>
+                    <td>
+                        <a href="{{url('delete_rating/'.$item->id)}}" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</a>
                     </td>
                     
                 </tr>

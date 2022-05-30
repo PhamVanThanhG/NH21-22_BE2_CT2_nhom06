@@ -115,6 +115,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
    Route::get('users', [AdminUserController::class, 'users']);
    Route::get('view-users/{id}', [AdminUserController::class, 'viewusers']);
    Route::get('rating', [AdminUserController::class, 'rating']);
+   Route::get('delete_rating/{id}', [AdminUserController::class, 'delete']);
 });
 
 Route::get("/", [ProductController::class, 'index']);
