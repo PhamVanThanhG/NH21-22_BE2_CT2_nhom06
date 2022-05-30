@@ -14,7 +14,7 @@
                 </div>
                 <div class="col-6">
                     <label for="">Type: </label>
-                    <select class="form-select" name="type_id">
+                    <select class="form-select" name="type_id" required>
                         <option value="">Select Product Type</option>
                        @foreach ($product_type as $item )
                        <option value="{{$item->id}}">{{$item->type_name}}</option>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-12">
                     <label for="">Discount: </label>
-                    <select class="form-select" name="discount_id">
+                    <select class="form-select" name="discount_id" required>
                         <option value="">Select Discount</option>
                        @foreach ($discount as $item )
                        <option value="{{$item->id}}">{{$item->values*100}}%</option>
