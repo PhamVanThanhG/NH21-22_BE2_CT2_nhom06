@@ -28,7 +28,7 @@
                     @if ($product->image)
                     <img class="type-image" src="{{asset('images/'.$product->image)}}" alt="">
                 @endif
-                    <input type="file" class="form-control" name ="image" required>
+                    <input type="file" class="form-control" name ="image">
                 </div>
                 <div class="col-6">
                     <label for="">Price: </label>

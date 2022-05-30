@@ -19,7 +19,7 @@
                     @if ($product_type->image)
                     <img class="type-image" src="{{asset('images/'.$product_type->image)}}" alt="">
                 @endif
-                    <input type="file" class="form-control" name ="image" required>
+                    <input type="file" class="form-control" name ="image">
                 </div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Submit</button>
