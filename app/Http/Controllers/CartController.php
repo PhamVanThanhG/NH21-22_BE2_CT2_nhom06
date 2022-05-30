@@ -121,4 +121,20 @@ class CartController extends Controller
         Cart::where('user_id', Auth::user()->id)->delete();
         return redirect()->back();
     }
+
+    function addcartonindex($product_id = ''){
+        $cart = Cart::where('user_id', Auth::user()->id)->where('product_id', $product_id)->get();
+        if (count($cart) == 0) {
+            DB::table('cart')->insert([
+                [
+                    'product_id' => $product_id,
+                    'user_id' => Auth::user()->id,
+                    'quantity' => 1,
+                ]
+            ]);
+            return redirect()->back();
+        }else{
+            return redirect()->back();
+        }
+    }
 }

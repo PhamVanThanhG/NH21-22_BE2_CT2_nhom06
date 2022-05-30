@@ -233,7 +233,6 @@ class ProductSeeder extends Seeder
             'image' => "bluetooth-jbl-partybox-100-den-2-1.jpg",
             'price' => 95,
             'discount_id' => 3,
-            
             'feature' => 0,
             
         ],
@@ -291,6 +290,15 @@ class ProductSeeder extends Seeder
             
             'feature' => 0,
             
+        ],
+        [
+            'name' => "Webcam 480P A4Tech",
+            'type_id' => 1,
+            'description' => "Webcam được chế tác đơn giản, chỉ nặng 206 gram, chân đế thiết kế với họa tiết độc lạ, kích cỡ lớn, đặt vững vàng ở bất kỳ nơi nào bạn muốn, rất dễ di động. Bề mặt phủ gam màu bạc kết hợp màu đen thanh lịch, tạo điểm nhấn sang trọng cho không gian nội thất.",
+            'image' => "webcam-480p-a4tech-pk-635g-bac-2.jpg",
+            'price' => 98,
+            'discount_id' => 4,
+            'feature' => 1,
         ],
         [
             'name' => "Loa Bluetooth Sony Extra",

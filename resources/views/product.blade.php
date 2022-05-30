@@ -1,6 +1,10 @@
 @extends('master')
 @section('content')
+
 <?php
+
+use Illuminate\Support\Facades\Auth;
+
 function getRatingByProductId($array, $productid)
 {
   $result = array();
@@ -47,6 +51,7 @@ $index = $sizeLists / 6 + 1;
       }
       ?>
     </ul>
+
     <div class="row" id="productShow">
       <?php
       for ($i = 0; $i < 6; $i++) {
@@ -68,27 +73,27 @@ $index = $sizeLists / 6 + 1;
               <div style="position: absolute;">
                 <img src="{{ asset('images/'.$value['image']) }}" alt="">
               </div>
-              <a href="#" class="add_cart_btn">
-                <span>
-                  Add To Cart<br>
-                </span>
-              </a>
+              <a href="{{ url('/addcartonindex/'.$value['id'])}}" class="add_cart_btn" id="addcartonindex">
+                  <span>
+                    Add To Cart<br>
+                  </span>
+                </a>
             </div>
             <div class="detail-box">
-            <a href="/detail/{{ $value['id'] }}">
+              <a href="/detail/{{ $value['id'] }}">
                 <h5>
                   <?php echo $value['name'] ?>
                 </h5>
               </a>
               <div class="product_info">
-              <h5>
+                <h5>
                   <span>$</span><?php echo (number_format($value['price'] * (1 - $value->discount->values))) ?>
                   <?php
-                    if ($value->discount->active != 0) {
-                      ?>
-                      <del class="product-old-price" style="margin-left: 8px;">$<?php echo(number_format($value['price'])) ?></del>
-                      <?php
-                    }
+                  if ($value->discount->active != 0) {
+                  ?>
+                    <del class="product-old-price" style="margin-left: 8px;">$<?php echo (number_format($value['price'])) ?></del>
+                  <?php
+                  }
                   ?>
                 </h5>
                 <?php
@@ -173,28 +178,29 @@ $index = $sizeLists / 6 + 1;
     </div>
   </div>
 </section>
+
 <!-- end product section -->
 <script>
   const all = document.getElementById('all');
   const show = document.getElementById('productShow');
   const phantrang = document.getElementById('phantrang');
   <?php
-  for ($j = 1; $j <= $index + 1; $j++) {
+  for ($j = 1; $j <= $index; $j++) {
   ?>
     const chuyentrang<?php echo $j ?> = document.getElementById('chuyentrang<?php echo $j ?>');
   <?php
   }
-  for ($j = 1; $j <= $index + 1; $j++) {
+  for ($j = 1; $j <= $index; $j++) {
   ?>
     chuyentrang<?php echo $j ?>.addEventListener("click", () => {
       show.innerHTML = `      <?php
                               $end = 0;
                               if (($j * 6) > $sizeLists) {
                                 $end = $sizeLists;
-                              }else{
+                              } else {
                                 $end = $j * 6;
                               }
-                              for ($i = (($j -1) * 6); $i < $end; $i++) {
+                              for ($i = (($j - 1) * 6); $i < $end; $i++) {
                                 $value = $productsShow[$i];
                               ?>
         <div class="col-sm-6 col-lg-4">
@@ -212,11 +218,11 @@ $index = $sizeLists / 6 + 1;
               <div style="position: absolute;">
                 <img src="{{ asset('images/'.$value['image']) }}" alt="">
               </div>
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart<br>
-                </span>
-              </a>
+              <a href="{{ url('/addcartonindex/'.$value['id'])}}" class="add_cart_btn" id="addcartonindex">
+                  <span>
+                    Add To Cart<br>
+                  </span>
+                </a>
             </div>
             <div class="detail-box">
             <a href="/detail/{{ $value['id'] }}">
@@ -228,12 +234,12 @@ $index = $sizeLists / 6 + 1;
               <h5>
                   <span>$</span><?php echo (number_format($value['price'] * (1 - $value->discount->values))) ?>
                   <?php
-                    if ($value->discount->active != 0) {
-                      ?>
-                      <del class="product-old-price" style="margin-left: 8px;">$<?php echo(number_format($value['price'])) ?></del>
-                      <?php
-                    }
+                                if ($value->discount->active != 0) {
                   ?>
+                      <del class="product-old-price" style="margin-left: 8px;">$<?php echo (number_format($value['price'])) ?></del>
+                      <?php
+                                }
+                      ?>
                 </h5>
                 <?php
                                 $ratingProduct = getRatingByProductId($rating, $value['id']);
@@ -320,5 +326,20 @@ $index = $sizeLists / 6 + 1;
   <?php
   }
   ?>
+    const addcartonindex = document.getElementById("addcartonindex");
+  addcartonindex.addEventListener('click', () => {
+    <?php
+    if (!Auth::check()) {
+    ?>
+      swal("ADD CART", "You must login before add product to your cart!");
+      event.preventDefault();
+    <?php
+    } else {
+    ?>
+      swal("ADD CART", "Add that product to your cart successfully!");
+    <?php
+    }
+    ?>
+  })
 </script>
 @endsection

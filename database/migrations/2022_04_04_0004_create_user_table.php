@@ -23,6 +23,7 @@ class CreateUserTable extends Migration
             $table->string('lname')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
+            $table->string('rank')->default("Bronze member");
             $table->rememberToken();
             $table->timestamps();
         });

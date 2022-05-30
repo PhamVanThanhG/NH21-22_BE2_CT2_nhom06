@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Auth;
 
   <title>Minics</title>
 
-
   <!-- bootstrap core css -->
   <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> -->
   <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
@@ -62,7 +61,6 @@ use Illuminate\Support\Facades\Auth;
 
   <!-- Sweet alert -->
   <!-- <link rel="stylesheet" href="{{ asset('sweetalert2/dist/sweetalert2.css') }}"> -->
-
 </head>
 
 <body class="sub_page">
