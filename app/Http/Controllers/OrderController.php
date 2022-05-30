@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderedProduct;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -54,15 +55,24 @@ class OrderController extends Controller
         $comment = $request->input('comment');
         $rating_value = (int)$request->input('rating');
         $product_id = (int)$request->input('product_id');
-        //Add to order
-        DB::table('rating')->insert([
-            [
-                'product_id' => $product_id,
-                'user_id' => Auth::user()->id,
+        $reviewExits = Rating::where('user_id', Auth::user()->id)->where('product_id', $product_id)->get();
+        var_dump($reviewExits);
+        if (count($reviewExits) == 0) {
+            //Add to order
+            DB::table('rating')->insert([
+                [
+                    'product_id' => $product_id,
+                    'user_id' => Auth::user()->id,
+                    'rating_value' => $rating_value,
+                    'comment' => $comment
+                ]
+            ]);
+        }else{
+            Rating::where('user_id', Auth::user())->where('product_id', $product_id)->update([
                 'rating_value' => $rating_value,
                 'comment' => $comment
-            ]
-        ]);
+            ]);
+        }
         return redirect()->back();
     }
 }
