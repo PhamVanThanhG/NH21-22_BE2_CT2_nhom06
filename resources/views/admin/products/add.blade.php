@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-6">
                     <label for="">Name: </label>
-                    <input type="text" class="form-control" name ="name">
+                    <input type="text" class="form-control" name ="name" required>
                 </div>
                 <div class="col-6">
                     <label for="">Type: </label>
@@ -24,15 +24,15 @@
                 </div>
                 <div class="col-6">
                     <label for="">Description: </label>
-                    <input type="text" class="form-control" name ="description">
+                    <input type="text" class="form-control" name ="description" required>
                 </div>
                 <div class="col-6">
                     <label for="">Image: </label>
-                    <input type="file" class="form-control" name ="image">
+                    <input type="file" class="form-control" name ="image" required>
                 </div>
                 <div class="col-6">
                     <label for="">Price: </label>
-                    <input type="number" class="form-control" name ="price">
+                    <input type="number" class="form-control" name ="price" required>
                 </div>
                 <div class="col-12">
                     <label for="">Discount: </label>

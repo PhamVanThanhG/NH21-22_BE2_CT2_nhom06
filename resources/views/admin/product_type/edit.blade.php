@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-12">
                     <label for="">Type Name: </label>
-                    <input type="text" value="{{$product_type->type_name}}" class="form-control" name ="name">
+                    <input type="text" value="{{$product_type->type_name}}" class="form-control" name ="name" required>
                 </div>
 
                 <div class="col-12">

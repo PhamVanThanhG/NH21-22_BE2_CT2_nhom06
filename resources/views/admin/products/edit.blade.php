@@ -11,17 +11,17 @@
             <div class="row">
                 <div class="col-6">
                     <label for="">Name: </label>
-                    <input type="text" class="form-control" value="{{$product->name}}" name ="name">
+                    <input type="text" class="form-control" value="{{$product->name}}" name ="name" required>
                 </div>
                 <div class="col-6">
                     <label for="">Type: </label>
-                    <select class="form-select" name="type_id">
+                    <select class="form-select" name="type_id" required>
                         <option value="">{{$product->product_type->type_name}}</option>
                       </select>
                 </div>
                 <div class="col-6">
                     <label for="">Description: </label>
-                    <input type="text"  class="form-control" value="{{$product->description}}" name ="description">
+                    <input type="text"  class="form-control" value="{{$product->description}}" name ="description" required>
                 </div>
                 <div class="col-6">
                     <label for="">Image: </label>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="col-6">
                     <label for="">Price: </label>
-                    <input type="number" class="form-control" value="{{$product->price}}" name ="price">
+                    <input type="number" class="form-control" value="{{$product->price}}" name ="price" required>
                 </div>
                 <div class="col-12">
                     <label for="">Discount: </label>
