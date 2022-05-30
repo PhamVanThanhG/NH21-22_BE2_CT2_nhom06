@@ -17,4 +17,8 @@ class Rating extends Model
     function user(){
         return $this->belongsTo(Users::class, 'user_id');
     }
+
+    function product(){
+        return $this->belongsTo(Product::class, 'product_id');
+    }
 }

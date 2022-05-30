@@ -18,8 +18,7 @@ class ProductController extends Controller
 
     function index()
     {
-
-        $product = Product::all();
+        $product = Product::orderBy('id', 'DESC')->get();
         $product_type = Product_Type::all();
         $rating = Rating::all();
         $feature_product = Product::where('feature', '1')->inRandomOrder()->take(4)->get();
@@ -197,5 +196,9 @@ class ProductController extends Controller
         $productRelated = Product::where('type_id', $product[0]['type_id'])->inRandomOrder()->take(4)->get();
         //return view("index", compact('product', 'product_type', 'rating', 'feature_product', 'productRelated', 'price', 'sale'));
         return view("index", ['product' => $product, 'product_type' => $product_type, 'rating' => $rating, 'feature_product' => $feature_product, 'productRelated' => $productRelated, 'price' => $price, 'sale' => $sale]);
+    }
+
+    function wishlist(){
+        return view("wishlist");
     }
 }

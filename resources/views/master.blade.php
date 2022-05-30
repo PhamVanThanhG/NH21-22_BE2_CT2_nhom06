@@ -126,6 +126,11 @@ use Illuminate\Support\Facades\Auth;
                     </a>
                   </li>
                   <li>
+                    <a class="dropdown-item" href="{{ url('/wishlist')}}">
+                      <i class="fa-solid fa-bag-shopping"></i> My wishlist
+                    </a>
+                  </li>
+                  <li>
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                       <i class="fa-solid fa-circle-xmark"></i> {{ __('Logout') }}
                     </a>

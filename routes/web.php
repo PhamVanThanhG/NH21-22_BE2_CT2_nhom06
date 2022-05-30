@@ -131,3 +131,5 @@ Route::post("/addreview", [OrderController::class, 'addreview']);
 Route::get("/search", [ProductController::class, 'search']);
 Route::get("/filter/{priceToSet}/{saleToSet}", [ProductController::class, 'filter']);
 Route::get("/addcartonindex/{product_id}",[CartController::class, 'addcartonindex']);
+
+Route::get("/wishlist", [ProductController::class, 'wishlist']);

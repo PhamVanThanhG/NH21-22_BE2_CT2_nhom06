@@ -32,4 +32,7 @@ class Product extends Model
     function orderedProduct(){
         return $this->hasMany(Cart::class, 'product_id', 'id');
     }
+    function rating(){
+        return $this->hasMany(Rating::class, 'product_id', 'id');
+    }
 }

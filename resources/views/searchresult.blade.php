@@ -66,7 +66,7 @@ if (count($productsShow) < 6) {
                 <div style="position: absolute;">
                   <img src="{{ asset('images/'.$value['image']) }}" alt="">
                 </div>
-                <a href="#" class="add_cart_btn">
+                <a href="{{ url('/addcartonindex/'.$value['id'])}}" class="add_cart_btn" id="addcartonindex">
                   <span>
                     Add To Cart<br>
                   </span>
@@ -215,11 +215,11 @@ if (count($productsShow) < 6) {
               <div style="position: absolute;">
                 <img src="{{ asset('images/'.$value['image']) }}" alt="">
               </div>
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart<br>
-                </span>
-              </a>
+              <a href="{{ url('/addcartonindex/'.$value['id'])}}" class="add_cart_btn" id="addcartonindex">
+                  <span>
+                    Add To Cart<br>
+                  </span>
+                </a>
             </div>
             <div class="detail-box">
             <a href="/detail/{{ $value['id'] }}">
